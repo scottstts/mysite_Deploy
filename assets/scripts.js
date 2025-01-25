@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
         const sliders = {};
 
         // Initialize each slider separately
-        ['1', '2', '3', '4', '5', '6', '7', '8'].forEach(num => {
+        ['1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(num => {
             sliders[`slider${num}`] = tns({
                 ...tnsOptions,
                 container: `.project${num}-slider`
