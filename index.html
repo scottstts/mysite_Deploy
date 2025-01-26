@@ -9,8 +9,7 @@
     <meta name="description" content="Scott Sun || Frontier AI Chaser | Builder | Tech-centric Solutions | Techno Optimist">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css" rel="stylesheet">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
@@ -19,7 +18,7 @@
 <body class="min-h-screen py-8 md:py-12 px-4 sm:px-6 lg:px-8">
     <!-- intro video -->
     <div id="intro-video-container" class="fixed inset-0 z-50 bg-black">
-        <video id="intro-video" class="w-full h-full object-cover" playsinline muted>
+        <video id="intro-video" class="w-full h-full object-cover" playsinline muted preload="auto">
             <source src="assets/intro.mp4" type="video/mp4">
         </video>
     </div>
@@ -68,11 +67,11 @@
                         <h3 class="text-xl font-bold mb-4 text-gray-200">I'm on</h3>
                         <div class="flex flex-col space-y-4">
                             <a href="https://x.com/Scott_S612" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 p-2 rounded-lg transition-all duration-200 hover:bg-white/10">
-                                <img src="/assets/X_logo.png" alt="X logo" class="h-8 w-8" />
+                                <img src="/assets/X_logo.png" alt="X logo" class="h-8 w-8" loading="lazy"/>
                                 <span class="text-xl text-white hover:text-blue-300">@Scott_S612</span>
                             </a>
                             <a href="https://www.linkedin.com/in/st-scottsun-inireland/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 p-2 rounded-lg transition-all duration-200 hover:bg-white/10">
-                                <img src="/assets/linkedin_logo.png" alt="LinkedIn logo" class="h-8 w-8" />
+                                <img src="/assets/linkedin_logo.png" alt="LinkedIn logo" class="h-8 w-8" loading="lazy"/>
                                 <span class="text-xl text-white hover:text-blue-300">Scott Sun</span>
                             </a>
                         </div>
@@ -97,8 +96,8 @@
                     <div class="slider-container p-3 md:p-4">
                         <div class="relative">
                             <div class="project3-slider">
-                                <div><img src="assets/alien_invasion.jpeg" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
-                                <div><img src="assets/bookshare.jpeg" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/alien_invasion.jpeg" loading="lazy" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/bookshare.jpeg" loading="lazy" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
                             </div>
                         </div>
                     </div>
@@ -118,8 +117,8 @@
                     <div class="slider-container p-3 md:p-4">
                         <div class="relative">
                             <div class="project4-slider">
-                                <div><img src="assets/poi.jpeg" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
-                                <div><img src="assets/early_chatgpt.jpeg" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/poi.jpeg" loading="lazy" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/early_chatgpt.jpeg" loading="lazy" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
                             </div>
                         </div>
                     </div>
@@ -143,8 +142,8 @@
                     <div class="slider-container p-3 md:p-4">
                         <div class="relative">
                             <div class="project5-slider">
-                                <div><img src="assets/makemore.jpeg" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
-                                <div><img src="assets/miniGPT.jpeg" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/makemore.jpeg" loading="lazy" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/miniGPT.jpeg" loading="lazy" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
                             </div>
                         </div>
                     </div>
@@ -162,7 +161,7 @@
                     <div class="slider-container p-3 md:p-4">
                         <div class="relative">
                             <div class="project6-slider">
-                                <div><img src="assets/blender.jpeg" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/blender.jpeg" loading="lazy" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
                                 <div class="video-container">
                                     <iframe 
                                         id="youtube-player-1"
@@ -170,7 +169,8 @@
                                         title="Blender Renders" 
                                         frameborder="0" 
                                         allow="accelerometer; clipboard-write; encrypted-media;" 
-                                        allowfullscreen>
+                                        allowfullscreen
+                                        loading="lazy">
                                     </iframe>
                                 </div>
                             </div>
@@ -192,7 +192,7 @@
                     <div class="slider-container p-3 md:p-4">
                         <div class="relative">
                             <div class="project7-slider">
-                                <div><img src="assets/autodrive_code.jpeg" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/autodrive_code.jpeg" loading="lazy" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
                                 <div class="video-container">
                                     <iframe 
                                         id="youtube-player-2"
@@ -200,7 +200,8 @@
                                         title="AutoDrive" 
                                         frameborder="0" 
                                         allow="accelerometer; clipboard-write; encrypted-media;" 
-                                        allowfullscreen>
+                                        allowfullscreen
+                                        loading="lazy">
                                     </iframe>
                                 </div>
                             </div>
@@ -222,8 +223,8 @@
                     <div class="slider-container p-3 md:p-4">
                         <div class="relative">
                             <div class="project8-slider">
-                                <div><img src="assets/cs50.jpeg" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
-                                <div><img src="assets/cs50_cert.jpeg" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/cs50.jpeg" loading="lazy" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/cs50_cert.jpeg" loading="lazy" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
                             </div>
                         </div>
                     </div>
@@ -245,10 +246,10 @@
                     <div class="slider-container p-3 md:p-4">
                         <div class="relative">
                             <div class="project9-slider">
-                                <div><img src="assets/vacation_planner.jpeg" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
-                                <div><img src="assets/transcrilate.jpeg" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
-                                <div><img src="assets/hf_daily_papers.jpeg" alt="Screenshot 3" class="rounded-xl w-full object-cover"></div>
-                                <div><img src="assets/arxiv.jpeg" alt="Screenshot 4" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/vacation_planner.jpeg" loading="lazy" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/transcrilate.jpeg" loading="lazy" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/hf_daily_papers.jpeg" loading="lazy" alt="Screenshot 3" class="rounded-xl w-full object-cover"></div>
+                                <div><img src="assets/arxiv.jpeg" loading="lazy" alt="Screenshot 4" class="rounded-xl w-full object-cover"></div>
                             </div>
                         </div>
                     </div>
@@ -256,7 +257,7 @@
             </div>
 
             <div class="glass-card rounded-2xl overflow-hidden fade-in p-8 text-left space-y-6" style="animation-delay: 0.6s;">
-                <img src="assets/naval_tweet.jpeg" alt="naval_tweet" class="rounded-xl w-full object-cover">
+                <img src="assets/naval_tweet.jpeg" loading="lazy" alt="naval_tweet" class="rounded-xl w-full object-cover">
                 <p class="text-xl md:text-2xl italic text-yellow-100">
                     Now I'm buried by countless AI papers on arXiv and bombarded with AI/Tech development news on 𝕏 on a daily basis. Although I never stopped making more useful apps both for practical use, keeping skills sharp, and for some fun, only I've been taking them even further and exploring actually deploying the app, CI/CD, taking in user feedback for continuous improvements, as well as getting more users.<br><br> 
 
@@ -276,9 +277,9 @@
                 <div class="relative">
                     <div class="slider-container p-3 md:p-4">
                         <div class="project1-slider">
-                            <div><img src="assets/jobguru1.jpeg" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
-                            <div><img src="assets/jobguru2.jpeg" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
-                            <div><img src="assets/jobguru3.jpeg" alt="Screenshot 3" class="rounded-xl w-full object-cover"></div>
+                            <div><img src="assets/jobguru1.jpeg" loading="lazy" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
+                            <div><img src="assets/jobguru2.jpeg" loading="lazy" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
+                            <div><img src="assets/jobguru3.jpeg" loading="lazy" alt="Screenshot 3" class="rounded-xl w-full object-cover"></div>
                         </div>
                     </div>
                 </div>
@@ -298,11 +299,11 @@
                 <div class="relative">
                     <div class="slider-container p-3 md:p-4">
                         <div class="project2-slider">
-                            <div><img src="assets/learntube1.jpeg" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
-                            <div><img src="assets/learntube2.jpeg" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
-                            <div><img src="assets/learntube3.jpeg" alt="Screenshot 3" class="rounded-xl w-full object-cover"></div>
-                            <div><img src="assets/learntube4.jpeg" alt="Screenshot 3" class="rounded-xl w-full object-cover"></div>
-                            <div><img src="assets/learntube5.jpeg" alt="Screenshot 3" class="rounded-xl w-full object-cover"></div>
+                            <div><img src="assets/learntube1.jpeg" loading="lazy" alt="Screenshot 1" class="rounded-xl w-full object-cover"></div>
+                            <div><img src="assets/learntube2.jpeg" loading="lazy" alt="Screenshot 2" class="rounded-xl w-full object-cover"></div>
+                            <div><img src="assets/learntube3.jpeg" loading="lazy" alt="Screenshot 3" class="rounded-xl w-full object-cover"></div>
+                            <div><img src="assets/learntube4.jpeg" loading="lazy" alt="Screenshot 3" class="rounded-xl w-full object-cover"></div>
+                            <div><img src="assets/learntube5.jpeg" loading="lazy" alt="Screenshot 3" class="rounded-xl w-full object-cover"></div>
                         </div>
                     </div>
                 </div>

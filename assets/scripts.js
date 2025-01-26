@@ -3,15 +3,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const introContainer = document.getElementById('intro-video-container');
     const mainContent = document.querySelector('main');
     
-    // Start playing the video
-    introVideo.play();
+    // Defer loading of sliders and other content
+    let contentLoaded = false;
+    
+    // Function to load remaining content
+    function loadRemainingContent() {
+        if (contentLoaded) return;
+        contentLoaded = true;
+        
+        // Load tiny-slider script dynamically
+        const tinySliderScript = document.createElement('script');
+        tinySliderScript.src = "https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js";
+        document.head.appendChild(tinySliderScript);
+        
+        // Load tiny-slider CSS
+        const tinySliderCSS = document.createElement('link');
+        tinySliderCSS.rel = 'stylesheet';
+        tinySliderCSS.href = "https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css";
+        document.head.appendChild(tinySliderCSS);
+        
+        // Initialize sliders after tiny-slider loads
+        tinySliderScript.onload = initializeSliders;
+    }
+    
+    // Start loading video immediately
+    introVideo.load();
+    
+    // When video can play through
+    introVideo.addEventListener('canplaythrough', function() {
+        introVideo.play();
+        // Start loading other content while video plays
+        loadRemainingContent();
+    });
     
     // When video ends
     introVideo.addEventListener('ended', function() {
         introContainer.classList.add('hidden');
         mainContent.classList.add('visible');
         
-        // Remove the video container after transition
         setTimeout(() => {
             introContainer.remove();
         }, 500);
@@ -22,19 +51,22 @@ document.addEventListener('DOMContentLoaded', function() {
         introContainer.classList.add('hidden');
         mainContent.classList.add('visible');
         introContainer.remove();
+        loadRemainingContent();
     });
     
     // Optional: Skip intro if video takes too long to load
     setTimeout(() => {
-        if (introVideo.readyState < 3) { // Video hasn't loaded enough to play
+        if (introVideo.readyState < 3) {
             introContainer.classList.add('hidden');
             mainContent.classList.add('visible');
             introContainer.remove();
+            loadRemainingContent();
         }
-    }, 5000); // 5 second timeout
+    }, 5000);
 });
 
-window.addEventListener('load', function() {
+// Slider initialization function
+function initializeSliders() {
     try {
         const tnsOptions = {
             container: '',
@@ -118,9 +150,9 @@ window.addEventListener('load', function() {
     } catch (error) {
         console.error('Error initializing sliders:', error);
     }
-});
+}
 
-// Tab functionality remains the same
+// Tab functionality
 document.addEventListener('DOMContentLoaded', function() {
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
