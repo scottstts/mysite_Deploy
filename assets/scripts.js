@@ -1,3 +1,39 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const introVideo = document.getElementById('intro-video');
+    const introContainer = document.getElementById('intro-video-container');
+    const mainContent = document.querySelector('main');
+    
+    // Start playing the video
+    introVideo.play();
+    
+    // When video ends
+    introVideo.addEventListener('ended', function() {
+        introContainer.classList.add('hidden');
+        mainContent.classList.add('visible');
+        
+        // Remove the video container after transition
+        setTimeout(() => {
+            introContainer.remove();
+        }, 500);
+    });
+    
+    // Fallback in case video fails to load
+    introVideo.addEventListener('error', function() {
+        introContainer.classList.add('hidden');
+        mainContent.classList.add('visible');
+        introContainer.remove();
+    });
+    
+    // Optional: Skip intro if video takes too long to load
+    setTimeout(() => {
+        if (introVideo.readyState < 3) { // Video hasn't loaded enough to play
+            introContainer.classList.add('hidden');
+            mainContent.classList.add('visible');
+            introContainer.remove();
+        }
+    }, 3000); // 3 second timeout
+});
+
 window.addEventListener('load', function() {
     try {
         const tnsOptions = {
