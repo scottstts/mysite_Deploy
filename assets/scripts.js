@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mainContent.classList.add('visible');
             introContainer.remove();
         }
-    }, 3000); // 3 second timeout
+    }, 5000); // 5 second timeout
 });
 
 window.addEventListener('load', function() {
