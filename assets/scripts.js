@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-
     const introVideo = document.getElementById('intro-video');
     const introContainer = document.getElementById('intro-video-container');
     const mainContent = document.querySelector('main');
@@ -65,98 +64,8 @@ document.addEventListener('DOMContentLoaded', function() {
             loadRemainingContent();
         }
     }, 5000);
-});
 
-// Slider initialization function
-function initializeSliders() {
-    try {
-        const tnsOptions = {
-            container: '',
-            items: 1,
-            slideBy: 'page',
-            controls: true,
-            controlsText: ['←', '→'],
-            nav: true,
-            autoplay: true,
-            autoplayButtonOutput: false,
-            autoplayTimeout: 5000,
-            speed: 400,
-            responsive: {
-                0: {
-                    items: 1,
-                    gutter: 0
-                },
-                640: {
-                    items: 1,
-                    gutter: 20
-                }
-            },
-            preventScrollOnTouch: 'auto',
-            touch: true,
-            mouseDrag: true
-        };
-
-        // Store all sliders in an object for easy reference
-        const sliders = {};
-
-        // Initialize each slider separately
-        ['1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(num => {
-            sliders[`slider${num}`] = tns({
-                ...tnsOptions,
-                container: `.project${num}-slider`
-            });
-        });
-
-        // YouTube API integration
-        function onYouTubeIframeAPIReady() {
-            // Create players for all YouTube iframes
-            document.querySelectorAll('iframe[src*="youtube.com"]').forEach(iframe => {
-                const player = new YT.Player(iframe.id, {
-                    events: {
-                        'onStateChange': function(event) {
-                            // Find which slider contains this YouTube player
-                            const sliderContainer = iframe.closest('[class*="project"]');
-                            if (!sliderContainer) return;
-                            
-                            const sliderId = sliderContainer.className.match(/project(\d+)-slider/)[1];
-                            const currentSlider = sliders[`slider${sliderId}`];
-                            
-                            if (!currentSlider) return;
-
-                            if (event.data === YT.PlayerState.PLAYING) {
-                                // Pause the slider when video starts playing
-                                currentSlider.pause();
-                                // Disable autoplay
-                                currentSlider.options.autoplay = false;
-                            } else if (event.data === YT.PlayerState.ENDED || 
-                                     event.data === YT.PlayerState.PAUSED) {
-                                // Re-enable autoplay and resume slider
-                                currentSlider.options.autoplay = true;
-                                currentSlider.play();
-                            }
-                        }
-                    }
-                });
-            });
-        }
-
-        // Add YouTube API script
-        const tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        // Make onYouTubeIframeAPIReady global
-        window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-
-    } catch (error) {
-        console.error('Error initializing sliders:', error);
-    }
-}
-
-// Tab functionality
-document.addEventListener('DOMContentLoaded', function() {
-
+    // Initialize tab functionality
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
     
@@ -192,3 +101,102 @@ document.addEventListener('DOMContentLoaded', function() {
         switchTab(firstTab);
     }
 });
+
+// Function to initialize YouTube players
+function initYouTubePlayers() {
+    // Create a global callback for YouTube API
+    window.onYouTubeIframeAPIReady = function() {
+        // Find all YouTube iframes
+        document.querySelectorAll('iframe[src*="youtube.com"]').forEach(iframe => {
+            // Extract video ID from src
+            const videoId = iframe.src.split('/').pop().split('?')[0];
+            
+            new YT.Player(iframe.id, {
+                videoId: videoId,
+                playerVars: {
+                    enablejsapi: 1,
+                    origin: window.location.origin
+                },
+                events: {
+                    'onStateChange': function(event) {
+                        // Find which slider contains this YouTube player
+                        const sliderContainer = event.target.getIframe().closest('[class*="project"]');
+                        if (!sliderContainer) return;
+                        
+                        const sliderId = sliderContainer.className.match(/project(\d+)-slider/)[1];
+                        const currentSlider = window.sliders?.[`slider${sliderId}`];
+                        
+                        if (!currentSlider) return;
+
+                        if (event.data === YT.PlayerState.PLAYING) {
+                            // Pause the slider when video starts playing
+                            currentSlider.pause();
+                            currentSlider.options.autoplay = false;
+                        } else if (event.data === YT.PlayerState.ENDED || 
+                                 event.data === YT.PlayerState.PAUSED) {
+                            // Re-enable autoplay and resume slider
+                            currentSlider.options.autoplay = true;
+                            currentSlider.play();
+                        }
+                    }
+                }
+            });
+        });
+    };
+
+    // Load YouTube API script
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
+
+// Slider initialization function
+function initializeSliders() {
+    try {
+        const tnsOptions = {
+            items: 1,
+            slideBy: 'page',
+            controls: true,
+            controlsText: ['←', '→'],
+            nav: true,
+            autoplay: true,
+            autoplayButtonOutput: false,
+            autoplayTimeout: 5000,
+            speed: 400,
+            responsive: {
+                0: {
+                    items: 1,
+                    gutter: 0
+                },
+                640: {
+                    items: 1,
+                    gutter: 20
+                }
+            },
+            preventScrollOnTouch: 'auto',
+            touch: true,
+            mouseDrag: true
+        };
+
+        // Store sliders in window object for global access
+        window.sliders = {};
+
+        // Initialize each slider separately
+        ['1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(num => {
+            const container = document.querySelector(`.project${num}-slider`);
+            if (container) {
+                window.sliders[`slider${num}`] = tns({
+                    ...tnsOptions,
+                    container: `.project${num}-slider`
+                });
+            }
+        });
+
+        // Initialize YouTube players after sliders are ready
+        initYouTubePlayers();
+
+    } catch (error) {
+        console.error('Error initializing sliders:', error);
+    }
+}
