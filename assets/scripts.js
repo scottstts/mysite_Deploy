@@ -200,3 +200,33 @@ function initializeSliders() {
         console.error('Error initializing sliders:', error);
     }
 }
+
+// Scroll to top functionality
+const scrollButton = document.getElementById('scroll-top-button');
+
+function toggleScrollButton() {
+    if (window.scrollY > 200) {
+        scrollButton.classList.remove('hidden');
+    } else {
+        scrollButton.classList.add('hidden');
+    }
+}
+
+scrollButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Throttle scroll event for better performance
+let isScrolling = false;
+window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+            toggleScrollButton();
+            isScrolling = false;
+        });
+        isScrolling = true;
+    }
+});
