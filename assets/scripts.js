@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+
     const introVideo = document.getElementById('intro-video');
     const introContainer = document.getElementById('intro-video-container');
     const mainContent = document.querySelector('main');
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         mainContent.classList.add('visible');
         
         setTimeout(() => {
+            window.scrollTo(0, 0);
             introContainer.remove();
         }, 500);
     });
@@ -154,6 +156,7 @@ function initializeSliders() {
 
 // Tab functionality
 document.addEventListener('DOMContentLoaded', function() {
+
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
     

@@ -14,6 +14,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
     <link href="assets/styles.css" rel="stylesheet">
+    <script>
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
 </head>
 <body class="min-h-screen py-8 md:py-12 px-4 sm:px-6 lg:px-8">
     <!-- intro video -->
@@ -28,6 +34,7 @@
             <button class="tab-button active text-lg font-semibold px-4 py-2" data-tab="about">Me & My Beliefs</button>
             <button class="tab-button text-lg font-semibold px-4 py-2" data-tab="projects">Learning & Projects</button>
             <button class="tab-button text-lg font-semibold px-4 py-2" data-tab="apps">My Apps</button>
+            <button class="tab-button text-lg font-semibold px-4 py-2" data-tab="Inspirations">My Inspirations</button>
         </nav>
 
         <!-- About Me Tab -->
@@ -108,9 +115,9 @@
                 <div class="p-5 md:p-8">
                     <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">Deep Learning Caught My Attention<span class="text-right block text-xl md:text-2xl font-semibold text-yellow-200 italic">—Aug. 2022</span></h2>
                     <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
-                        You remember that famous TV show Person of Interest? The iconic starting line was <span class="italic">“You are being watched. … A machine that spies on you every hour of every day. … I know, because I built it”</span>. I was fascinated about that show, and it drove me down a rabbit hole of research into artificial intelligence and the state of the art (at the time of course). Interestingly the show depicted the machine as completely hard-coded by Harold while real AI systems are neural net based models. I didn't know this distinction until later :)<br><br>
+                        You remember that famous TV show Person of Interest? The iconic starting line was <span class="italic">"You are being watched. … A machine that spies on you every hour of every day. … I know, because I built it"</span>. I was fascinated about that show, and it drove me down a rabbit hole of research into artificial intelligence and the state of the art (at the time of course). Interestingly the show depicted the machine as completely hard-coded by Harold while real AI systems are neural net based models. I didn't know this distinction until later :)<br><br>
 
-                        It was around the same time that a thing called “GPT” came out of nowhere (GPT-3 and GPT-3.5 small scale beta testing had already made its name) and started to create some real buzz.<br><br>
+                        It was around the same time that a thing called "GPT" came out of nowhere (GPT-3 and GPT-3.5 small scale beta testing had already made its name) and started to create some real buzz.<br><br>
 
                         I knew absolutely nothing about AI, machine learning, and deep learning at the time. Zero. From an initial toe dipping, I realized learning AI required tremendous amount of understanding in math and quite sophisticated coding skills. I wasn’t sure I was up for it, but I decided to give it a try. That decision has led me such a long way here in retrospect.
                     </p>
@@ -129,7 +136,7 @@
                 <div class="p-5 md:p-8">
                     <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">You Can Just Learn Things<span class="text-right block text-xl md:text-2xl font-semibold text-yellow-200 italic">—Jan. 2023</span></h2>
                     <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
-                        I was starting to get a rhythm on diving into something entirely new. So again I started with the basics—neural network. I soon realized it was not as difficult as I had imagined it to be to at least get started on, because I had already had foundations on calculus and statistics, and “that thing” called linear algebra which I had painfully learned as a mandatory class in undergrad without knowing what the heck it was for, suddenly became unbelievably important. I quickly absorbed concepts like backpropagation and gradient descent, and fundamentals on MLP, CNN, RNN, and RL (didn’t pay Attention to transformer—pun intended—until later sadly). <br><br>
+                        I was starting to get a rhythm on diving into something entirely new. So again I started with the basics—neural network. I soon realized it was not as difficult as I had imagined it to be to at least get started on, because I had already had foundations on calculus and statistics, and "that thing" called linear algebra which I had painfully learned as a mandatory class in undergrad without knowing what the heck it was for, suddenly became unbelievably important. I quickly absorbed concepts like backpropagation and gradient descent, and fundamentals on MLP, CNN, RNN, and RL (didn’t pay Attention to transformer—pun intended—until later sadly). <br><br>
 
                         Soon I moved to building practical and fun small projects following tutorials using, you guessed it, Keras. I built and trained a super simple chatbot using just MLP in one-hot encoding with a lengthy pre-written dialogue json (it looks utterly laughable now compared to transformer based LLMs but I had so much fun building it). I also built and trained a dog/cat image detection model with CNN among other things, as it is sorta like the rite of passage for all deep learning beginners :) <br><br>
 
@@ -155,7 +162,7 @@
                 <div class="p-5 md:p-8">
                     <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">Blender, A Change of Pace<span class="text-right block text-xl md:text-2xl font-semibold text-yellow-200 italic">—Apr. 2023</span></h2>
                     <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
-                        Today I don’t even remember how it started, but somehow I decided to learn Blender. I tend to think it is because 3D modeling and rendering is another epitome for the phrase “you can just build things”. And the exhilaration you get from creating something beautiful out of thin air is beyond words.<br><br>
+                        Today I don’t even remember how it started, but somehow I decided to learn Blender. I tend to think it is because 3D modeling and rendering is another epitome for the phrase "you can just build things". And the exhilaration you get from creating something beautiful out of thin air is beyond words.<br><br>
 
                         Building 3D models can be extremely time-consuming, EXTREMELY! But I enjoyed every minute of it. Seeing what you are building becoming just a bit more perfect is satisfying to say the least. During my learning in a few months, I made some beautiful rendered scenes and animations into final videos, and I would lay down sound tracks for them to make them even more cinematic. Considering I did all these on my old gaming laptop with an outdated GPU (even at the time), I am really happy I was able to make these! I selected some of them which I really like and threaded them into a video cut.
                     </p>
@@ -259,7 +266,7 @@
 
             <div class="glass-card rounded-2xl overflow-hidden fade-in p-8 text-left space-y-6" style="animation-delay: 0.6s;">
                 <img src="assets/naval_tweet.jpeg" loading="lazy" alt="naval_tweet" class="rounded-xl w-full object-cover">
-                <p class="text-xl md:text-2xl italic text-yellow-100">
+                <p class="text-xl md:text-2xl text-yellow-100">
                     Now I'm buried by countless AI papers on arXiv and bombarded with AI/Tech development news on 𝕏 on a daily basis. Although I never stopped making more useful apps both for practical use, keeping skills sharp, and for some fun, only I've been taking them even further and exploring actually deploying the app, CI/CD, taking in user feedback for continuous improvements, as well as getting more users.<br><br> 
 
                     I never had a CS degree (except if you count Harvard CS50), and I am not a professional engineer. But what you can never take away from me is my starving hunger for learning. I love this Naval tweet, I'd like to think I'm a smart person, and there is immense joy for me in self learning interesting and useful new things. I will never stop learning.<br><br>
@@ -275,7 +282,7 @@
             
             <!-- Project 1 -->
             <div class="glass-card rounded-2xl overflow-hidden fade-in" style="animation-delay: 0.2s;">
-                <div class="p-5 md:p-8">
+                <div class="p-5 md:p-8 space-y-6">
                     <!-- Title -->
                     <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">Job Guru</h2>
                     
@@ -304,7 +311,7 @@
 
             <!-- Project 2 -->
             <div class="glass-card rounded-2xl overflow-hidden fade-in" style="animation-delay: 0.4s;">
-                <div class="p-5 md:p-8">
+                <div class="p-5 md:p-8 space-y-6">
                     <!-- Title -->
                     <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">LearnTube</h2>
                     
@@ -335,10 +342,108 @@
 
             <!-- Future Project Teaser -->
             <div class="glass-card rounded-2xl overflow-hidden fade-in p-8 text-center" style="animation-delay: 0.6s;">
-                <p class="text-xl md:text-2xl italic text-yellow-100">
+                <p class="text-xl md:text-2xl text-yellow-100">
                     I'm sure a new idea will hit me soon... :)
                 </p>
             </div>
+        </div>
+
+        <!-- Inspirations Tab -->
+        <div id="Inspirations" class="tab-content space-y-8">
+            <h1 class="page-title text-4xl md:text-5xl font-bold text-center mb-12 fade-in">My Inspirations</h1>
+            
+            <!-- part 1 -->
+            <div class="glass-card rounded-2xl overflow-hidden fade-in" style="animation-delay: 0.2s;">
+                <div class="p-5 md:p-8">
+                    <!-- Title -->
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">Elon Musk</h2>
+                    
+                    <!-- Description -->
+                    <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
+                        <span class="font-semibold text-yellow-200">I would pick flawed authenticity over faked perfection any day.</span><br><br>
+
+                        To borrow the ending of the <span class="font-semibold italic">Elon Musk</span> biography by Walter Isaacson, "<span class="italic">They can be reckless, cringeworthy, sometimes even toxic. They can also be crazy. Crazy enough to think they can change the world.</span>"<br><br>
+
+                        Elon is pure, an extremely rare trait these days, especially in public figures. He always says what he means and means what he says. This is why he is always surrounded by controversies. But even among these controversies, you should never ignore the fact that he has advanced more frontier exploration of modern time than any single individual in history. In fact, this is my <span class="font-semibold">litmus test</span> for people–you can disagree with his political opinions all you want, but if you’d go as far as writing off all his achievements solely based on his political opinions, I know we are not the same people.<br><br>
+
+                        His brilliance, hard work, determination, execution, honesty, and good heart are among some of the things I constantly look up to.
+
+                    </p>
+                    
+                    <!-- Pictures -->
+                    <img src="assets/elon.jpeg" loading="lazy" alt="elon" class="rounded-xl w-full object-cover">
+                </div>
+            </div>
+
+            <!-- part 2 -->
+            <div class="glass-card rounded-2xl overflow-hidden fade-in" style="animation-delay: 0.2s;">
+                <div class="p-5 md:p-8">
+                    <!-- Title -->
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">Jensen Huang</h2>
+                    
+                    <!-- Description -->
+                    <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
+                        <span class="font-semibold text-yellow-200">The only limitation is your imagination and execution.</span><br><br>
+
+                        From a dishwasher to Founder/CEO of the biggest and most influential company in the world today, how can you not find Jensen Huang inspiring?<br><br>
+
+                        He always goes to first principles when faced with extraordinarily complex problems. This is what makes him such a visionary and problem solver. He works constantly, learns constantly, and inspires people constantly. He perceives a goal, sets a course, and pursues it persistently on the order of decades. Nvidia’s success is not a fluke, it is a group of people guided by a wise and consistent man to position around the apple tree so they would be the closest to pick them up when the apples fall.<br><br>
+
+                        Jensen tells the story with his own life that you can just do things.
+
+                    </p>
+                    
+                    <!-- Pictures -->
+                    <img src="assets/jensen.jpeg" loading="lazy" alt="jensen" class="rounded-xl w-full object-cover">
+                </div>
+            </div>
+            
+            <!-- part 3 -->
+            <div class="glass-card rounded-2xl overflow-hidden fade-in" style="animation-delay: 0.2s;">
+                <div class="p-5 md:p-8">
+                    <!-- Title -->
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">Naval Ravikant</h2>
+                    
+                    <!-- Description -->
+                    <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
+                        <span class="font-semibold text-yellow-200">Imagine the wisest philosopher you’ve read, now look at Naval’s tweets.</span><br><br>
+
+                        My life was not the same after I was introduced with <span class="font-semibold italic">The Almanack of Naval Ravicant</span>. Life is a willful journey. If you go through your life just doing things without giving them much thought, you are just a group of molecules drifting where the universe takes you.<br><br>
+
+                        Of all the wisdom from Naval on wealth, health, and happiness, what I get from him the most is self reflection and the urge to listen to my heart. The key is to be unapologetically proactive on who you really are.
+                    </p>
+                    
+                    <!-- Pictures -->
+                    <img src="assets/naval.jpeg" loading="lazy" alt="naval" class="rounded-xl w-full object-cover">
+                </div>
+            </div>
+
+            <!-- part 4 -->
+            <div class="glass-card rounded-2xl overflow-hidden fade-in" style="animation-delay: 0.2s;">
+                <div class="p-5 md:p-8">
+                    <!-- Title -->
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">Andrej Karpathy</h2>
+                    
+                    <!-- Description -->
+                    <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
+                        <span class="font-semibold text-yellow-200">You don’t just get called "AI mentor for an entire generation", you have to have earned it.</span><br><br>
+
+                        Andrej Karpathy’s tutorials on neural networks and Transformer are one of the major reasons why I’ve become so obsessed with AI, and certainly the biggest reason why I was able to advance from surface impressions to deeper technical understanding as an absolute beginner. I also know for a fact that this goes for most new AI enthusiasts like me in the past few years. And before that, his class CS231n at Stanford was a source of inspiration and knowledge for many computer vision talents.<br><br>
+
+                        I am glad Andrej decided to go all in on democratizing AI education after his journey at OpenAI and Tesla, which God knows people now and in the future desperately need. He is a phenomenal educator and just one of the most brilliant minds out there.
+                    </p>
+                    
+                    <!-- Pictures -->
+                    <img src="assets/karpathy.jpeg" loading="lazy" alt="karpathy" class="rounded-xl w-full object-cover">
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl overflow-hidden fade-in p-8 text-left" style="animation-delay: 0.6s;">
+                <p class="text-xl md:text-2xl text-yellow-100">
+                    I'm grateful that they exist. Our timeline is infinitely better with them in it. And whenever life gets difficult, which is often, I receive visceral strength and courage watching their brilliance and hard work in action!❤️
+                </p>
+            </div>
+
         </div>
     </main>
 
