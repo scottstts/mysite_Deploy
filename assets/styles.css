@@ -536,7 +536,7 @@ nav {
 /* Mobile optimization */
 @media (max-width: 640px) {
     .scroll-top-button {
-        bottom: 2.0rem; /* Slightly increased for better touch target */
+        bottom: 3.0rem; /* Slightly increased for better touch target */
         right: 1.5rem;
         padding: 0.625rem; /* Slightly increased padding */
     }
