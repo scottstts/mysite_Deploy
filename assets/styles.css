@@ -486,7 +486,7 @@ nav {
 /* scroll to top button */
 .scroll-top-button {
     position: fixed;
-    bottom: 2rem;
+    bottom: 3rem;
     right: 2rem;
     display: flex;
     flex-direction: column;
@@ -536,7 +536,7 @@ nav {
 /* Mobile optimization */
 @media (max-width: 640px) {
     .scroll-top-button {
-        bottom: 1.5rem; /* Slightly increased for better touch target */
+        bottom: 2.0rem; /* Slightly increased for better touch target */
         right: 1.5rem;
         padding: 0.625rem; /* Slightly increased padding */
     }
@@ -549,4 +549,47 @@ nav {
     .scroll-top-button span {
         font-size: 0.75rem;
     }
+}
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.7rem;
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    z-index: 40;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    max-width: 4xl;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    line-height: 1;
+}
+
+.fa-code {
+    font-size: 1rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.fixed-footer:hover .fa-code {
+    transform: rotate(10deg);
 }
