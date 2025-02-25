@@ -9,43 +9,60 @@
     --nav-dot-active: #6366f1;
     --card-shadow: rgba(0, 0, 0, 0.25);
     --accent-gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
+    --accent-glow: rgba(99, 102, 241, 0.5);
 }
 
-/* Base styles with your original setup */
+/* Replace your current body background settings with this */
+/* Fixed background image sizing */
 body {
     background-color: #0f172a;
     background-image: 
-        linear-gradient(to right, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.86)),
+        linear-gradient(to right, rgba(15, 23, 42, 0.94), rgba(0, 0, 30, 0.86)),
         url('../assets/bg.jpeg');
     background-size: cover;
     background-attachment: fixed;
-    background-position: center;
+    background-position: center center;
     position: relative;
     min-height: 100vh;
     overflow-x: hidden;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text-primary);
 }
 
-/* Create a starfield effect with two layers for seamless loop */
+/* Fix for iOS devices where background-attachment: fixed doesn't work properly */
+@supports (-webkit-touch-callout: none) {
+    body {
+        /* Use a different approach for iOS */
+        background-attachment: scroll;
+        background-position: center center;
+    }
+}
+
+/* Replace your current starfield effect with this improved version */
 body::before {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 200%;  /* Double height for seamless loop */
+    height: 400%;  /* Increased height for smoother looping */
     background-image: 
-        radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0)),
-        radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0)),
-        radial-gradient(1.5px 1.5px at 90px 40px, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0)),
-        radial-gradient(2px 2px at 160px 120px, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0));
+        radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 40px 70px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 90px 40px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+        radial-gradient(2.5px 2.5px at 160px 120px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0)),
+        radial-gradient(3px 3px at 200px 200px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+        radial-gradient(3px 3px at 300px 250px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0)),
+        radial-gradient(3.5px 3.5px at 350px 350px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0));
     background-repeat: repeat;
-    background-size: 200px 200px;
-    animation: starfield 60s linear infinite;
+    background-size: 400px 400px;
+    animation: starfield 120s linear infinite;
     pointer-events: none;
     z-index: 1;
+    opacity: 0.8;
 }
 
-/* Add a subtle nebula effect */
+/* Update the nebula effect for better color harmony with blue theme */
 body::after {
     content: '';
     position: fixed;
@@ -54,20 +71,23 @@ body::after {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 50% 50%, 
-            rgba(76, 0, 255, 0.05) 0%,
-            rgba(15, 23, 42, 0) 60%),
-        radial-gradient(circle at 85% 15%, 
-            rgba(0, 255, 255, 0.03) 0%,
-            rgba(15, 23, 42, 0) 50%);
-    filter: blur(60px);
+        radial-gradient(circle at 30% 50%, 
+            rgba(59, 130, 246, 0.12) 0%,
+            rgba(15, 23, 42, 0) 70%),
+        radial-gradient(circle at 85% 30%, 
+            rgba(79, 70, 229, 0.1) 0%,
+            rgba(15, 23, 42, 0) 65%),
+        radial-gradient(circle at 70% 80%, 
+            rgba(56, 189, 248, 0.08) 0%,
+            rgba(15, 23, 42, 0) 60%);
+    filter: blur(90px);
     mix-blend-mode: screen;
-    animation: nebula 30s ease infinite;
+    animation: nebula 40s ease infinite alternate;
     pointer-events: none;
     z-index: 2;
 }
 
-/* Add a subtle grid effect */
+/* Update the grid overlay for a more subtle effect */
 .grid-overlay {
     position: fixed;
     top: 0;
@@ -75,43 +95,55 @@ body::after {
     width: 100%;
     height: 100%;
     background-image: 
-        linear-gradient(rgba(46, 91, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(46, 91, 255, 0.03) 1px, transparent 1px);
-    background-size: 30px 30px;
+        linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
     pointer-events: none;
     z-index: 3;
-    animation: gridPulse 15s ease-in-out infinite;
+    animation: gridPulse 20s ease-in-out infinite alternate;
 }
 
-/* Animations */
+/* Improve the starfield animation for smoother movement */
 @keyframes starfield {
     0% {
-        transform: translateY(0);
+        transform: translateY(0) rotate(0.5deg);
+    }
+    50% {
+        transform: translateY(-50%) rotate(0deg);
     }
     100% {
-        transform: translateY(-50%);  /* Only move up half way for seamless loop */
+        transform: translateY(-75%) rotate(-0.5deg);
     }
 }
 
+/* Enhance the nebula animation */
 @keyframes nebula {
-    0%, 100% {
-        opacity: 0.5;
+    0% {
+        opacity: 0.7;
         transform: scale(1);
     }
     50% {
-        opacity: 0.7;
-        transform: scale(1.1);
+        opacity: 0.9;
+        transform: scale(1.15) rotate(1deg);
+    }
+    100% {
+        opacity: 0.8;
+        transform: scale(1.1) rotate(-1deg);
     }
 }
 
 @keyframes gridPulse {
-    0%, 100% {
+    0% {
         opacity: 0.3;
         background-size: 30px 30px;
     }
     50% {
         opacity: 0.5;
         background-size: 32px 32px;
+    }
+    100% {
+        opacity: 0.4;
+        background-size: 31px 31px;
     }
 }
 
@@ -121,11 +153,10 @@ main {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    opacity: 0; /* Add this */
-    transition: opacity 0.5s ease-in; /* Add this */
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
 }
 
-/* Add this new rule */
 main.visible {
     opacity: 1;
 }
@@ -134,9 +165,10 @@ nav {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-    gap: 2rem;
+    gap: 2.5rem; /* Slightly increased gap */
     width: 100%;
     margin-bottom: 3rem;
+    padding: 1.5rem 1rem 0;
 }
 
 .page-title {
@@ -146,6 +178,9 @@ nav {
     color: transparent;
     position: relative;
     display: inline-block;
+    font-weight: 700; /* Bolder title */
+    letter-spacing: -0.025em; /* Tighter letter spacing */
+    text-shadow: 0 0 15px var(--accent-glow); /* Subtle glow */
 }
 
 .page-title::after {
@@ -156,21 +191,27 @@ nav {
     width: 60%;
     height: 3px;
     background: var(--accent-gradient);
-    border-radius: 2px;
+    border-radius: 4px; /* Slightly rounder corners */
     transform: translateX(33%);
+    box-shadow: 0 0 8px var(--accent-glow); /* Add glow to underline */
 }
 
 .view-button {
     background: var(--accent-gradient);
     color: white;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
     position: relative;
     overflow: hidden;
+    border-radius: 0.5rem; /* Ensure consistent rounding */
+    font-weight: 500; /* Medium weight for buttons */
+    letter-spacing: 0.01em; /* Subtle letter spacing */
 }
 
 .view-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    transform: translateY(-3px); /* Slightly more lift */
+    box-shadow: 
+        0 4px 12px rgba(99, 102, 241, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .view-button::after {
@@ -182,7 +223,7 @@ nav {
     height: 100%;
     background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
     transform: translateY(-100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
 }
 
 .view-button:hover::after {
@@ -191,23 +232,26 @@ nav {
 
 .tns-nav {
     text-align: center;
-    margin: 15px 0;
+    margin: 20px 0; /* Increased margin */
 }
 
 .tns-nav button {
-    width: 8px;
-    height: 8px;
+    width: 10px; /* Slightly larger dots */
+    height: 10px;
     border-radius: 50%;
     background: var(--nav-dot);
     border: 0;
-    margin: 0 4px;
+    margin: 0 5px; /* More spacing between dots */
     padding: 0;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
+    opacity: 0.6; /* Start more transparent */
 }
 
 .tns-nav button.tns-nav-active {
     background: var(--nav-dot-active);
-    transform: scale(1.2);
+    transform: scale(1.3); /* Slightly larger active state */
+    opacity: 1;
+    box-shadow: 0 0 6px var(--accent-glow); /* Add glow to active dot */
 }
 
 .tns-controls {
@@ -225,26 +269,35 @@ nav {
 
 .tns-controls button {
     pointer-events: auto;
-    background: var(--card-bg);
-    border: none;
+    background: rgba(30, 41, 59, 0.8); /* More transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 44px; /* Slightly larger buttons */
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text-primary);
     font-size: 18px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px var(--card-shadow);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
+    box-shadow: 
+        0 4px 12px var(--card-shadow),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
     opacity: 0.8;
     margin: 0 -8px;
+    backdrop-filter: blur(8px); /* Glass effect */
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .tns-controls button:hover {
     background: var(--button-bg);
-    color: var(--card-bg);
+    color: white;
     opacity: 1;
+    transform: scale(1.1); /* Grow on hover */
+    box-shadow: 
+        0 6px 16px var(--card-shadow),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 0 16px rgba(99, 102, 241, 0.3); /* Glow effect */
 }
 
 .tns-controls button[data-controls="prev"] {
@@ -257,6 +310,7 @@ nav {
 
 .slider-container {
     position: relative;
+    padding: 0.5rem; /* Add padding */
 }
 
 .slider-container::after {
@@ -268,12 +322,13 @@ nav {
     bottom: 0;
     pointer-events: none;
     border-radius: 0.75rem;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.2); /* Inner shadow for depth */
 }
 
 @media (max-width: 640px) {
     .tns-controls button {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
         font-size: 14px;
     }
 }
@@ -284,18 +339,22 @@ nav {
 }
 
 .fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; /* Improved easing */
+    will-change: opacity, transform; /* Performance optimization */
 }
 
-/* Tabs styling */
+/* Improved tabs styling */
 .tab-button {
     position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
     background: transparent;
     color: var(--text-secondary);
     white-space: nowrap;
     width: auto;
     flex: 0 0 auto;
+    padding: 0.5rem 1rem; /* Added padding */
+    border-radius: 0.25rem; /* Subtle rounding */
+    font-weight: 500; /* Medium weight */
 }
 
 @media (max-width: 1024px) {
@@ -309,6 +368,7 @@ nav {
     .tab-button {
       width: 100%;
       text-align: center;
+      padding: 0.75rem; /* More padding on mobile */
     }
 }
 
@@ -321,21 +381,28 @@ nav {
     height: 2px;
     background: var(--accent-gradient);
     transform: scaleX(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
+    box-shadow: 0 0 6px var(--accent-glow); /* Add glow */
 }
 
 .tab-button.active {
     color: var(--text-primary);
+    text-shadow: 0 0 10px var(--accent-glow); /* Subtle glow for active tab */
 }
 
 .tab-button.active::after {
     transform: scaleX(1);
 }
 
+.tab-button:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.05); /* Subtle hover effect */
+    color: var(--text-primary);
+}
+
 .tab-content {
     display: none; 
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
     position: absolute; 
     width: 100%;
 }
@@ -344,20 +411,36 @@ nav {
     display: block; 
     opacity: 1;
     position: relative;
+    animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); /* Add fade-in animation */
 }
 
 /* Enhanced glassmorphism for cards */
 .glass-card {
-    background: rgba(30, 41, 59, 0.5);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(30, 41, 59, 0.6); /* More transparency */
+    backdrop-filter: blur(16px); /* Increased blur */
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06),
+        0 8px 30px -5px rgba(0, 0, 0, 0.2),
+        0 4px 10px -5px rgba(0, 0, 0, 0.1),
         inset 0 0 80px rgba(99, 102, 241, 0.05);
     position: relative;
     overflow: hidden;
+    border-radius: 1rem; /* Rounder corners */
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* Smoother transitions */
+}
+
+.glass-card p {
+    margin-bottom: 0;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+    box-shadow: 
+        0 15px 35px -5px rgba(0, 0, 0, 0.2),
+        0 8px 15px -5px rgba(0, 0, 0, 0.1),
+        inset 0 0 80px rgba(99, 102, 241, 0.08),
+        0 0 15px rgba(99, 102, 241, 0.1); /* Glow effect */
 }
 
 .glass-card::before {
@@ -370,11 +453,12 @@ nav {
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.08),
         transparent
     );
-    transition: 0.5s;
+    transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
     pointer-events: none;
+    z-index: -1;
 }
 
 .glass-card:hover::before {
@@ -386,64 +470,68 @@ nav {
     text-shadow: 0 0 5px #fff5d4,
                  0 0 10px #ffd700,
                  0 0 20px #ffd700;
-    animation: starlight-pulse 2s ease-in-out infinite;
-  }
+    animation: starlight-pulse 2.5s ease-in-out infinite; /* Slower, more subtle */
+}
   
-  @keyframes starlight-pulse {
+@keyframes starlight-pulse {
     0% {
-      text-shadow: 0 0 5px #fff5d4,
-                 0 0 10px #ffd700,
-                 0 0 20px #ffd700;
+        text-shadow: 0 0 5px #fff5d4,
+                    0 0 10px #ffd700,
+                    0 0 20px #ffd700;
     }
     50% {
-      text-shadow: 0 0 10px #fff5d4,
-                 0 0 20px #ffd700,
-                 0 0 30px #ffd700,
-                 0 0 40px #ffe44d;
+        text-shadow: 0 0 10px #fff5d4,
+                    0 0 20px #ffd700,
+                    0 0 30px #ffd700,
+                    0 0 40px rgba(255, 228, 77, 0.5); /* Reduced intensity */
     }
     100% {
-      text-shadow: 0 0 5px #fff5d4,
-                 0 0 10px #ffd700,
-                 0 0 20px #ffd700;
+        text-shadow: 0 0 5px #fff5d4,
+                    0 0 10px #ffd700,
+                    0 0 20px #ffd700;
     }
-  }
+}
 
 .eater-regular {
     font-family: "Eater", serif;
     font-weight: 400;
     font-style: normal;
+    letter-spacing: 0.02em; /* Added subtle letter spacing */
 }
 
 .video-container {
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 100%;         /* Fill parent height */
-    aspect-ratio: 16/9;   /* Maintain video aspect ratio */
-  }
+    height: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 0.75rem; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
   
-  .video-container iframe {
+.video-container iframe {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100%;
     height: 100%;
     transform: translate(-50%, -50%);
-    object-fit: cover;    /* This ensures the video fills the container */
-    min-width: 100%;      /* Ensure full width coverage */
-    min-height: 100%;     /* Ensure full height coverage */
-  }
+    object-fit: cover;
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: 0.75rem; /* Match container */
+}
   
-  #intro-video-container {
+#intro-video-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;  /* Full viewport width */
-    height: 100vh; /* Full viewport height */
+    width: 100vw;
+    height: 100vh;
     z-index: 9999;
     background-color: black;
     opacity: 1;
-    transition: opacity 0.5s ease-out;
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -459,7 +547,7 @@ nav {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    object-fit: cover; /* This ensures the video covers the entire container */
+    object-fit: cover;
 }
 
 /* Handle ultrawide screens to prevent stretching */
@@ -483,30 +571,31 @@ nav {
     pointer-events: none;
 }
 
-/* scroll to top button */
+/* Improved scroll to top button */
 .scroll-top-button {
     position: fixed;
-    bottom: 3rem;
+    bottom: 3.5rem; /* Moved slightly higher */
     right: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
-    padding: 0.75rem;
-    background: rgba(99, 102, 241, 0.9); /* Made more opaque for Safari */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1rem; /* Wider padding */
+    background: rgba(99, 102, 241, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 1rem;
     color: var(--text-primary);
     cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 999; /* Increased z-index */
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
+    z-index: 999;
     font-size: 0.875rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Ensure GPU acceleration on Safari */
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        0 0 10px rgba(99, 102, 241, 0.2); /* Add glow */
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
     will-change: transform;
-    /* Separate backdrop-filter for better Safari support */
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
 }
@@ -514,16 +603,18 @@ nav {
 /* Specific fixes for iOS Safari */
 @supports (-webkit-touch-callout: none) {
     .scroll-top-button {
-        /* Fallback background for iOS Safari if backdrop-filter isn't working */
-        background: rgba(99, 102, 241, 0.95);
+        background: rgba(99, 102, 241, 0.9);
     }
 }
 
 .scroll-top-button:hover {
     background: rgba(99, 102, 241, 0.95);
-    transform: translateY(-2px) translateZ(0);
-    -webkit-transform: translateY(-2px) translateZ(0);
-    box-shadow: 0 6px 12px rgba(99, 102, 241, 0.2);
+    transform: translateY(-4px) translateZ(0) scale(1.05); /* More pronounced hover */
+    -webkit-transform: translateY(-4px) translateZ(0) scale(1.05);
+    box-shadow: 
+        0 8px 20px rgba(99, 102, 241, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 0 15px rgba(99, 102, 241, 0.3); /* Enhanced glow */
 }
 
 .scroll-top-button.hidden {
@@ -536,13 +627,13 @@ nav {
 /* Mobile optimization */
 @media (max-width: 640px) {
     .scroll-top-button {
-        bottom: 3.0rem; /* Slightly increased for better touch target */
+        bottom: 3.5rem;
         right: 1.5rem;
-        padding: 0.625rem; /* Slightly increased padding */
+        padding: 0.75rem;
     }
     
     .scroll-top-button svg {
-        width: 1.5rem; /* Slightly larger for better touch target */
+        width: 1.5rem;
         height: 1.5rem;
     }
     
@@ -556,18 +647,23 @@ nav {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 0.7rem;
-    background: rgba(30, 41, 59, 0.5);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    padding: 0.8rem;
+    background: rgba(30, 41, 59, 0.7); /* More solid */
+    backdrop-filter: blur(16px); /* Enhanced blur */
+    -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
     color: var(--text-secondary);
     font-size: 0.875rem;
     z-index: 40;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
     text-decoration: none;
-    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -8px 16px -5px rgba(0, 0, 0, 0.1);
+}
+
+.fixed-footer:hover {
+    background: rgba(30, 41, 59, 0.8);
+    color: var(--text-primary);
 }
 
 .footer-content {
@@ -582,14 +678,66 @@ nav {
 }
 
 .fa-code {
-    font-size: 1rem;
+    font-size: 1.125rem; /* Slightly larger */
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Improved easing */
+    filter: drop-shadow(0 0 5px var(--accent-glow)); /* Add glow */
 }
 
 .fixed-footer:hover .fa-code {
-    transform: rotate(10deg);
+    transform: rotate(15deg) scale(1.2); /* Enhanced animation */
+}
+
+/* New Enhancements - without requiring HTML changes */
+
+/* Enhanced typography */
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.025em; /* Tighter heading spacing */
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-weight: 800;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 1.5em;
+}
+
+/* Improved focus states for accessibility */
+a:focus, button:focus {
+    outline: 2px solid var(--button-bg);
+    outline-offset: 2px;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better transitions between tab content */
+.tab-content {
+    transition: 
+        opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(10px);
+}
+
+.tab-content.active {
+    transform: translateY(0);
+}
+
+/* Improved text selection */
+::selection {
+    background: rgba(99, 102, 241, 0.3);
+    color: var(--text-primary);
 }
