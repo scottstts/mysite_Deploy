@@ -60,6 +60,9 @@
             <source src="assets/static_assets/intro.mp4" type="video/mp4">
         </video>
     </div>
+    <!-- Background effects -->
+    <div class="starfield-effect"></div>
+    <div class="nebula-effect"></div>
     <div class="grid-overlay"></div>
     <main class="max-w-4xl mx-auto space-y-8 md:space-y-12">
         <nav>
@@ -77,10 +80,10 @@
                 <div class="space-y-6">
                     <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">Into The Unknown</h2>
                     <p class="text-lg text-white font-bold italic leading-relaxed">
-                        From the infinite potential of energy to the total actualization of entropy, <span class="highlight-glow text-2xl">intelligence</span> charts a course for the pursuit of <span class="highlight-glow text-2xl">meaning</span>, <span class="highlight-glow text-2xl">mission</span> and <span class="highlight-glow text-2xl">love</span>.
+                        From the infinite potential of energy to the total actualization of entropy, <span class="highlight-glow text-xl">intelligence</span> charts a course for the pursuit of <span class="highlight-glow text-xl">meaning</span>, <span class="highlight-glow text-xl">mission</span> and <span class="highlight-glow text-xl">love</span>.
                     </p>
                     <p class="text-lg text-white">
-                        I believe that all problems are eventually solvable through technology without introducing any additional externality. Technology evolves—gradually or rapidly—to match the complexity of problems. Today’s flawed solutions will never capture how easily these problems may be resolved in the future.<br><br>
+                        I believe that all problems are eventually solvable through technology without introducing any additional externality. Technology evolves—gradually or rapidly—to match the complexity of problems. Today's flawed solutions will never capture how easily these problems may be resolved in the future.<br><br>
 
                         Technology emerges from the interactions between intelligent entities and the universe they inhabit, while intelligence improves and evolves through technology. Technology is not only an external manifestation of intelligence but it stands as the ultimate culmination.<br><br>
 
@@ -141,7 +144,7 @@
                     <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
                         First stepping into a new field and learning tangible things is exciting and satisfying. This is especially true for programming. The basic realization became—huh, I can just build things.<br><br>
 
-                        I chose the book <span class="italic font-semibold">Python Crash Course</span> as a no-brainer and I still remember the Alien Invasion game made with pygame and the Learning Log with Django (although I started a new app called Book Share using everything I'd already learned in Learning Log and pushed so much further than what I knew), as I’m certain many people who started Python with this book do.<br><br>
+                        I chose the book <span class="italic font-semibold">Python Crash Course</span> as a no-brainer and I still remember the Alien Invasion game made with pygame and the Learning Log with Django (although I started a new app called Book Share using everything I'd already learned in Learning Log and pushed so much further than what I knew), as I'm certain many people who started Python with this book do.<br><br>
 
                         Programming is only a subdomain of computer science, and a programming language itself can be tedious. So I have learned the basics and intermediate Python, the immediate question that hit me was—what do I use it for?
                     </p>
@@ -164,7 +167,7 @@
 
                         It was around the same time that a thing called "GPT" came out of nowhere (GPT-3 and GPT-3.5 small scale beta testing had already made its name) and started to create some real buzz.<br><br>
 
-                        I knew absolutely nothing about AI, machine learning, and deep learning at the time. Zero. From an initial toe dipping, I realized learning AI required a tremendous amount of understanding in math and quite sophisticated coding skills. I wasn’t sure I was up for it, but I decided to give it a try. That decision has led me such a long way here in retrospect.
+                        I knew absolutely nothing about AI, machine learning, and deep learning at the time. Zero. From an initial toe dipping, I realized learning AI required a tremendous amount of understanding in math and quite sophisticated coding skills. I wasn't sure I was up for it, but I decided to give it a try. That decision has led me such a long way here in retrospect.
                     </p>
                     <div class="slider-container p-3 md:p-4">
                         <div class="relative">
@@ -181,13 +184,13 @@
                 <div class="p-5 md:p-8">
                     <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">You Can Just Learn Things<span class="text-right block text-xl md:text-2xl font-semibold text-yellow-200 italic">—Jan. 2023</span></h2>
                     <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
-                        I was starting to get a rhythm on diving into something entirely new. So again I started with the basics—neural networks. I soon realized it was not as difficult as I had imagined it to be to at least get started on, because I had already had foundations on calculus and statistics, and "that thing" called linear algebra which I had painfully learned as a mandatory class in undergrad without knowing what the heck it was for, suddenly became unbelievably important. I quickly absorbed concepts like backpropagation and gradient descent, and fundamentals on MLP, CNN, RNN, and RL (didn’t pay Attention to the Transformer—pun intended—until later sadly). <br><br>
+                        I was starting to get a rhythm on diving into something entirely new. So again I started with the basics—neural networks. I soon realized it was not as difficult as I had imagined it to be to at least get started on, because I had already had foundations on calculus and statistics, and "that thing" called linear algebra which I had painfully learned as a mandatory class in undergrad without knowing what the heck it was for, suddenly became unbelievably important. I quickly absorbed concepts like backpropagation and gradient descent, and fundamentals on MLP, CNN, RNN, and RL (didn't pay Attention to the Transformer—pun intended—until later sadly). <br><br>
 
                         Soon I moved to building practical and fun small projects following tutorials using, you guessed it, Keras. I built and trained a super simple chatbot using just MLP in one-hot encoding with a lengthy pre-written dialogue json (it looks utterly laughable now compared to transformer based LLMs but I had so much fun building it). I also built and trained a dog/cat image detection model with CNN among other things, as it is sorta like the rite of passage for all deep learning beginners <i class="fa-solid fa-face-laugh-wink"></i>. <br><br>
 
-                        But finally something big caught my attention, and it’s called <span class="italic font-semibold">Let's build GPT: from scratch, in code, spelled out</span> from the legend Andrej Karpathy! The first 10 mins in I quit, because I hadn’t even learned PyTorch yet <i class="fa-solid fa-face-sad-cry"></i>. I quickly did a PyTorch crash course, and I realized that I actually needed to learn to manipulate tensors in really granular ways instead of just stacking prebuilt layers like in Keras. After the quick PyTorch course, this time I didn’t directly jump into building GPT, but started from the first video tutorial in Karpathy’s channel and started intensively absorbing pure knowledge and brilliance, until finally I got to the super fun bonus part. <br><br>
+                        But finally something big caught my attention, and it's called <span class="italic font-semibold">Let's build GPT: from scratch, in code, spelled out</span> from the legend Andrej Karpathy! The first 10 mins in I quit, because I hadn't even learned PyTorch yet <i class="fa-solid fa-face-sad-cry"></i>. I quickly did a PyTorch crash course, and I realized that I actually needed to learn to manipulate tensors in really granular ways instead of just stacking prebuilt layers like in Keras. After the quick PyTorch course, this time I didn't directly jump into building GPT, but started from the first video tutorial in Karpathy's channel and started intensively absorbing pure knowledge and brilliance, until finally I got to the super fun bonus part. <br><br>
 
-                        I followed along every step in his building GPT video, doing side research whenever I saw something I didn’t understand, including reading <span class="italic font-semibold">Attention Is All You Need</span> paper dozens of times repeatedly, with each time getting just a bit more clarity. And finally, model was built and trained, I was able to see the tokens being generated one by one, and that was a magical moment.<br><br>
+                        I followed along every step in his building GPT video, doing side research whenever I saw something I didn't understand, including reading <span class="italic font-semibold">Attention Is All You Need</span> paper dozens of times repeatedly, with each time getting just a bit more clarity. And finally, model was built and trained, I was able to see the tokens being generated one by one, and that was a magical moment.<br><br>
 
                         Later I reviewed everything I learned from the mini-GPT dev and I pre-trained a GPT-like (100M Params) LLM from scratch using a portion of the Common Crawl dataset, and further finetuned it with some instruction datasets I could find at the time. The model achieved above 20 on Hellaswag.
                     </p>
@@ -207,7 +210,7 @@
                 <div class="p-5 md:p-8">
                     <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">Blender & Unity, A Change of Pace<span class="text-right block text-xl md:text-2xl font-semibold text-yellow-200 italic">—Apr. 2023</span></h2>
                     <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
-                        Today I don’t even remember how it started, but somehow I decided to learn Blender. I tend to think it is because 3D modeling and rendering is another epitome for the phrase "you can just build things". And the exhilaration you get from creating something beautiful out of thin air is beyond words.<br><br>
+                        Today I don't even remember how it started, but somehow I decided to learn Blender. I tend to think it is because 3D modeling and rendering is another epitome for the phrase "you can just build things". And the exhilaration you get from creating something beautiful out of thin air is beyond words.<br><br>
 
                         Building 3D models can be extremely time-consuming, EXTREMELY! But I enjoyed every minute of it. Seeing what you are building becoming just a bit more perfect is satisfying to say the least. During my learning in a few months, I made some beautiful rendered scenes and animations into final videos, and I would lay down sound tracks for them to make them even more cinematic. Considering I did all these on my old gaming laptop with an outdated GPU (even at the time), I am really happy I was able to make these! I selected some of them which I really like and threaded them into a video cut.<br><br>
 
@@ -240,7 +243,7 @@
                 <div class="p-5 md:p-8">
                     <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200">AutoDrive—3D Modeling and Unity, Meet ML<span class="text-right block text-xl md:text-2xl font-semibold text-yellow-200 italic">—Jun. 2023</span></h2>
                     <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
-                        As I was having fun making game projects, I came across a library developed by the Unity team called ML-Agents. This framework allows you to develop and train robotic agents with RL in a virtual world inside the Unity game engine, sorta like a simpler version of Nvidia’s Isaac Sim. This became a perfect crossover project between Blender, Unity, and ML for me.<br><br>
+                        As I was having fun making game projects, I came across a library developed by the Unity team called ML-Agents. This framework allows you to develop and train robotic agents with RL in a virtual world inside the Unity game engine, sorta like a simpler version of Nvidia's Isaac Sim. This became a perfect crossover project between Blender, Unity, and ML for me.<br><br>
                         
                         I used Blender to develop a 3D car model, exported it to Unity, and built a convoluted tunnel scene with the car being the agent, navigating out of the tunnel via RL-learned self driving. After weeks of painstaking adjustments on reward functions (in C#) and hyperparameters, and countless training failures, finally I successfully trained an agent capable of steering the car out of the tunnel autonomously.
                     </p>
@@ -273,7 +276,7 @@
 
                         In the meantime, I went into a little bit of a tech certificate phase. Did a full Harvard CS50 class, cloud certificates from Azure and AWS, as well as some advance AI engineering classes.<br><br>
                         
-                        But eventually, I realized that the best way to learn is after all project building. When you build, you’re forced to think about things from first principles, and you’re forced to go through every single technical detail instead of just going through them in your mind, which makes you super sharp in every part of the tech stack.
+                        But eventually, I realized that the best way to learn is after all project building. When you build, you're forced to think about things from first principles, and you're forced to go through every single technical detail instead of just going through them in your mind, which makes you super sharp in every part of the tech stack.
                     </p>
                     <div class="slider-container p-3 md:p-4">
                         <div class="relative">
@@ -312,7 +315,7 @@
             </div>
 
             <div class="glass-card rounded-2xl overflow-hidden fade-in p-8 text-left space-y-6" style="animation-delay: 0.6s;">
-                <img src="assets/static_assets/naval_tweet.jpeg" loading="lazy" alt="naval_tweet" class="rounded-xl w-full object-cover">
+                <img src="assets/static_assets/naval_tweet.jpeg" loading="lazy" alt="naval_tweet" class="rounded-xl w-full object-cover mb-6">
                 <p class="text-xl md:text-2xl text-yellow-100">
                     Now I'm buried by countless AI papers on arXiv and bombarded with AI/Tech development news on 𝕏 on a daily basis. Although I never stopped making more useful apps both for practical use, keeping skills sharp, and for some fun, only I've been taking them even further and exploring actually deploying the app, CI/CD, taking in user feedback for continuous improvements, as well as getting more users.<br><br> 
 
@@ -434,7 +437,7 @@
 
                         From a dishwasher to Founder/CEO of the biggest and most influential company in the world today, how can you not find Jensen Huang inspiring?<br><br>
 
-                        He always goes to first principles when faced with extraordinarily complex problems. This is what makes him such a visionary and problem solver. He works constantly, learns constantly, and inspires people constantly. He perceives a goal, sets a course, and pursues it persistently on the order of decades. Nvidia’s success is not a fluke, it is a group of brilliant people guided by a wise and persistent leader to position around the apple tree so they would be the closest to pick them up when the apples fall.<br><br>
+                        He always goes to first principles when faced with extraordinarily complex problems. This is what makes him such a visionary and problem solver. He works constantly, learns constantly, and inspires people constantly. He perceives a goal, sets a course, and pursues it persistently on the order of decades. Nvidia's success is not a fluke, it is a group of brilliant people guided by a wise and persistent leader to position around the apple tree so they would be the closest to pick them up when the apples fall.<br><br>
 
                         Jensen tells the story with his own life that you can just do things.<br><br>
 
@@ -453,7 +456,7 @@
                     
                     <!-- Description -->
                     <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
-                        <span class="font-semibold text-yellow-200">Imagine the wisest philosopher you’ve read, now look at Naval’s tweets.</span><br><br>
+                        <span class="font-semibold text-yellow-200">Imagine the wisest philosopher you've read, now look at Naval's tweets.</span><br><br>
 
                         My life was not the same after I was introduced with <span class="font-semibold italic">The Almanack of Naval Ravikant</span>. Life is a willful journey. If you go through your life just doing things without giving them much thought, you are just a group of molecules drifting where the universe takes you.<br><br>
 
@@ -473,9 +476,9 @@
                     
                     <!-- Description -->
                     <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
-                        <span class="font-semibold text-yellow-200">You don’t just get called "AI mentor for an entire generation", you have to have earned it.</span><br><br>
+                        <span class="font-semibold text-yellow-200">You don't just get called "AI mentor for an entire generation", you have to have earned it.</span><br><br>
 
-                        Andrej Karpathy’s tutorials on neural networks and Transformer are one of the major reasons why I’ve become so obsessed with AI, and certainly the biggest reason why I was able to advance from surface impressions to deeper technical understanding as an absolute beginner. I also know for a fact that this goes for most new AI enthusiasts like me in the past few years. And before that, his class CS231n at Stanford was a source of inspiration and knowledge for many computer vision talents.<br><br>
+                        Andrej Karpathy's tutorials on neural networks and Transformer are one of the major reasons why I've become so obsessed with AI, and certainly the biggest reason why I was able to advance from surface impressions to deeper technical understanding as an absolute beginner. I also know for a fact that this goes for most new AI enthusiasts like me in the past few years. And before that, his class CS231n at Stanford was a source of inspiration and knowledge for many computer vision talents.<br><br>
 
                         I am glad Andrej decided to go all in on democratizing AI education after his journey at OpenAI and Tesla, which God knows people now and in the future desperately need. He is a phenomenal educator and just one of the most brilliant minds out there.<br><br>
                     </p>
@@ -495,13 +498,13 @@
                     <p class="text-white text-base md:text-lg mb-6 leading-relaxed">
                         <span class="font-semibold text-yellow-200">Digital nomad is a statement of freedom, honesty, and getting shit done.</span><br><br>
 
-                        Funny enough, before Levels went on the Lex Pod, I’d never heard of him or the concept of digital nomad, now I find myself often contemplating the beauty of this way of life.<br><br>
+                        Funny enough, before Levels went on the Lex Pod, I'd never heard of him or the concept of digital nomad, now I find myself often contemplating the beauty of this way of life.<br><br>
 
                         He is a rebel against the status quo. He is a rebel against institutionalization and bureaucracy. And he is also a rebel against the confinement of creativity and productivity. Everything you need to build today can fit into a backpack. Your ideas have infinite potentials, you have infinite potentials.<br><br>
 
                         Pieter Levels represents a generation of indie hackers who feel disconnected to the world and rediscover peace, meaning, and success in a completely different spectrum of life, simply from building and sharing.<br><br>
 
-                        There is a profound wisdom from him and his philosophy that I find extremely enchanting. Your life doesn’t have to be just another fulfilment of the standard template. If you want something else, make it happen.<br><br>
+                        There is a profound wisdom from him and his philosophy that I find extremely enchanting. Your life doesn't have to be just another fulfilment of the standard template. If you want something else, make it happen.<br><br>
 
                     </p>
                     

@@ -24,6 +24,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Initialize sliders after tiny-slider loads
         tinySliderScript.onload = initializeSliders;
+        
+        // Load GSAP for advanced animations
+        const gsapScript = document.createElement('script');
+        gsapScript.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js";
+        document.head.appendChild(gsapScript);
+        
+        gsapScript.onload = function() {
+            // Initialize enhanced animations when GSAP loads
+            initEnhancedAnimations();
+        };
     }
     
     // Start loading video immediately
@@ -70,23 +80,52 @@ document.addEventListener('DOMContentLoaded', function() {
     const tabContents = document.querySelectorAll('.tab-content');
     
     function switchTab(targetTab) {
-        tabContents.forEach(content => {
-            content.classList.remove('active');
-        });
+        // Create a smoother transition between tabs
+        const activeContent = document.querySelector('.tab-content.active');
         
-        tabButtons.forEach(button => {
-            button.classList.remove('active');
-        });
-        
-        const targetContent = document.getElementById(targetTab);
-        targetContent.classList.add('active');
-        
-        document.querySelector(`[data-tab="${targetTab}"]`).classList.add('active');
-        
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        if (activeContent) {
+            activeContent.style.opacity = '0';
+            activeContent.style.transform = 'translateY(15px)';
+            
+            setTimeout(() => {
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                tabButtons.forEach(button => {
+                    button.classList.remove('active');
+                });
+                
+                const targetContent = document.getElementById(targetTab);
+                targetContent.classList.add('active');
+                
+                // Force reflow to ensure the animation runs
+                void targetContent.offsetWidth;
+                
+                targetContent.style.opacity = '1';
+                targetContent.style.transform = 'translateY(0)';
+                
+                document.querySelector(`[data-tab="${targetTab}"]`).classList.add('active');
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 300);
+        } else {
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            const targetContent = document.getElementById(targetTab);
+            targetContent.classList.add('active');
+            
+            document.querySelector(`[data-tab="${targetTab}"]`).classList.add('active');
+        }
     }
     
     tabButtons.forEach(button => {
@@ -151,7 +190,7 @@ function initYouTubePlayers() {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 }
 
-// Slider initialization function
+// Slider initialization function with enhanced options
 function initializeSliders() {
     try {
         const tnsOptions = {
@@ -163,7 +202,10 @@ function initializeSliders() {
             autoplay: true,
             autoplayButtonOutput: false,
             autoplayTimeout: 5000,
-            speed: 400,
+            speed: 600,
+            mode: 'carousel',
+            animateIn: 'fadeIn',
+            animateOut: 'fadeOut',
             responsive: {
                 0: {
                     items: 1,
@@ -201,14 +243,90 @@ function initializeSliders() {
     }
 }
 
-// Scroll to top functionality
+// Initialize enhanced animations using GSAP
+function initEnhancedAnimations() {
+    if (!window.gsap) return;
+    
+    // Add parallax effect to glass cards on scroll
+    const glassCards = document.querySelectorAll('.glass-card');
+    
+    if (glassCards.length) {
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            
+            glassCards.forEach((card, index) => {
+                const rect = card.getBoundingClientRect();
+                const centerY = rect.top + rect.height / 2;
+                const viewportHeight = window.innerHeight;
+                const distanceFromCenter = centerY - viewportHeight / 2;
+                const translateY = distanceFromCenter * -0.03;
+                
+                // Only apply effect if card is in viewport
+                if (rect.top < viewportHeight && rect.bottom > 0) {
+                    gsap.to(card, {
+                        y: translateY,
+                        duration: 0.5,
+                        ease: "power1.out"
+                    });
+                }
+            });
+        }, { passive: true });
+    }
+    
+    // Add subtle text reveal animation for highlighted text
+    const highlightedElements = document.querySelectorAll('.highlight-glow, .text-yellow-200');
+    
+    if (highlightedElements.length) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    gsap.fromTo(entry.target, 
+                        { opacity: 0.7, y: 10 },
+                        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+                    );
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        highlightedElements.forEach((element) => {
+            observer.observe(element);
+        });
+    }
+    
+    // Enhance page title animation
+    const pageTitle = document.querySelector('.page-title');
+    if (pageTitle) {
+        gsap.to(pageTitle, {
+            textShadow: "0 0 30px rgba(99, 102, 241, 0.7)",
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    }
+}
+
+// Scroll to top functionality with enhanced behavior
 const scrollButton = document.getElementById('scroll-top-button');
 
 function toggleScrollButton() {
     if (window.scrollY > 200) {
-        scrollButton.classList.remove('hidden');
+        if (scrollButton.classList.contains('hidden')) {
+            scrollButton.classList.remove('hidden');
+            setTimeout(() => {
+                scrollButton.style.transform = "translateY(0)";
+                scrollButton.style.opacity = "1";
+            }, 10);
+        }
     } else {
-        scrollButton.classList.add('hidden');
+        if (!scrollButton.classList.contains('hidden')) {
+            scrollButton.style.transform = "translateY(2rem)";
+            scrollButton.style.opacity = "0";
+            setTimeout(() => {
+                scrollButton.classList.add('hidden');
+            }, 300);
+        }
     }
 }
 
@@ -216,6 +334,21 @@ scrollButton.addEventListener('click', () => {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
+    });
+});
+
+// Add interactive card hover effects
+const glassCards = document.querySelectorAll('.glass-card');
+glassCards.forEach(card => {
+    card.addEventListener('mouseenter', function(e) {
+        if (window.innerWidth < 768) return; // Skip on mobile
+        
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        this.style.setProperty('--mouse-x', `${x}px`);
+        this.style.setProperty('--mouse-y', `${y}px`);
     });
 });
 
@@ -229,4 +362,53 @@ window.addEventListener('scroll', () => {
         });
         isScrolling = true;
     }
+}, { passive: true });
+
+// Add subtle text animation to nav items
+document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('mouseenter', () => {
+        if (!button.classList.contains('active') && window.gsap) {
+            gsap.to(button, {
+                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                duration: 0.3
+            });
+        }
+    });
+    
+    button.addEventListener('mouseleave', () => {
+        if (!button.classList.contains('active') && window.gsap) {
+            gsap.to(button, {
+                backgroundColor: 'transparent',
+                duration: 0.3
+            });
+        }
+    });
 });
+
+// Listen for window resize events to ensure correct layout
+window.addEventListener('resize', () => {
+    // Throttle resize events
+    if (window.resizeTimeout) {
+        clearTimeout(window.resizeTimeout);
+    }
+    
+    window.resizeTimeout = setTimeout(() => {
+        // Adjust any layout issues that might occur on resize
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.style.transform = '';
+        });
+    }, 250);
+}, { passive: true });
+
+// Add subtle starfield movement to body background
+document.addEventListener('mousemove', (e) => {
+    if (window.innerWidth < 768) return; // Skip on mobile
+    
+    const moveX = (e.clientX - window.innerWidth / 2) * 0.005;
+    const moveY = (e.clientY - window.innerHeight / 2) * 0.005;
+    
+    document.body.style.setProperty('--mouse-x', `${moveX}deg`);
+    document.body.style.setProperty('--mouse-y', `${moveY}deg`);
+    
+    document.body.style.backgroundPosition = `calc(50% + ${moveX}px) calc(50% + ${moveY}px)`;
+}, { passive: true });
