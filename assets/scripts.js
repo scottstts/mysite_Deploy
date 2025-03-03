@@ -328,6 +328,9 @@ function initEnhancedAnimations() {
     const glassCards = document.querySelectorAll('.glass-card');
     
     if (glassCards.length) {
+        // Parallax effect for glass cards has been disabled
+        // The following code was causing up/down movement on scroll
+        /*
         window.addEventListener('scroll', function() {
             const scrollY = window.scrollY;
             
@@ -348,6 +351,7 @@ function initEnhancedAnimations() {
                 }
             });
         }, { passive: true });
+        */
     }
     
     // Add subtle text reveal animation for highlighted text
