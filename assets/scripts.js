@@ -193,50 +193,127 @@ function initYouTubePlayers() {
 // Slider initialization function with enhanced options
 function initializeSliders() {
     try {
-        const tnsOptions = {
-            items: 1,
-            slideBy: 'page',
-            controls: true,
-            controlsText: ['←', '→'],
-            nav: true,
-            autoplay: true,
-            autoplayButtonOutput: false,
-            autoplayTimeout: 5000,
-            speed: 600,
-            mode: 'carousel',
-            animateIn: 'fadeIn',
-            animateOut: 'fadeOut',
-            responsive: {
-                0: {
-                    items: 1,
-                    gutter: 0
-                },
-                640: {
-                    items: 1,
-                    gutter: 20
-                }
-            },
-            preventScrollOnTouch: 'auto',
-            touch: true,
-            mouseDrag: true
-        };
-
-        // Store sliders in window object for global access
-        window.sliders = {};
-
-        // Initialize each slider separately
-        ['1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(num => {
-            const container = document.querySelector(`.project${num}-slider`);
-            if (container) {
-                window.sliders[`slider${num}`] = tns({
-                    ...tnsOptions,
-                    container: `.project${num}-slider`
+        // Preload images before initializing sliders
+        const preloadImages = () => {
+            const sliderContainers = document.querySelectorAll('[class*="project"]:not([class*="project-"])');
+            let imagesToLoad = 0;
+            let imagesLoaded = 0;
+            
+            // Count all images that need to be loaded
+            sliderContainers.forEach(container => {
+                const images = container.querySelectorAll('img');
+                imagesToLoad += images.length;
+                
+                // Force load images and track progress
+                images.forEach(img => {
+                    // If image is already loaded or has error
+                    if (img.complete) {
+                        imagesLoaded++;
+                        return;
+                    }
+                    
+                    // Add load and error event listeners
+                    img.addEventListener('load', () => {
+                        imagesLoaded++;
+                        if (imagesLoaded === imagesToLoad) {
+                            initSliders();
+                        }
+                    });
+                    
+                    img.addEventListener('error', () => {
+                        imagesLoaded++;
+                        console.error('Error loading image:', img.src);
+                        if (imagesLoaded === imagesToLoad) {
+                            initSliders();
+                        }
+                    });
+                    
+                    // Force reload if needed
+                    if (img.getAttribute('loading') === 'lazy') {
+                        img.setAttribute('loading', 'eager');
+                    }
+                    
+                    // Ensure src is set
+                    if (img.src) {
+                        const currentSrc = img.src;
+                        img.src = '';
+                        img.src = currentSrc;
+                    }
                 });
+            });
+            
+            // If no images or all images already loaded
+            if (imagesToLoad === 0 || imagesLoaded === imagesToLoad) {
+                initSliders();
             }
-        });
+        };
+        
+        // Initialize the actual sliders
+        const initSliders = () => {
+            const tnsOptions = {
+                items: 1,
+                slideBy: 'page',
+                controls: true,
+                controlsText: ['←', '→'],
+                nav: true,
+                autoplay: true,
+                autoplayButtonOutput: false,
+                autoplayTimeout: 5000,
+                speed: 600,
+                mode: 'carousel',
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                responsive: {
+                    0: {
+                        items: 1,
+                        gutter: 0
+                    },
+                    640: {
+                        items: 1,
+                        gutter: 20
+                    }
+                },
+                preventScrollOnTouch: 'auto',
+                touch: true,
+                mouseDrag: true,
+                lazyload: false, // Disable tiny-slider's built-in lazy loading
+                onInit: function() {
+                    // Fix for image display issues - ensure proper rendering after init
+                    setTimeout(() => {
+                        const sliderItems = document.querySelectorAll('.tns-item');
+                        sliderItems.forEach(item => {
+                            const img = item.querySelector('img');
+                            if (img) {
+                                // Force a reflow/repaint
+                                img.style.display = 'none';
+                                void img.offsetHeight; // Trigger reflow
+                                img.style.display = '';
+                            }
+                        });
+                    }, 100);
+                }
+            };
 
-        // Initialize YouTube players after sliders are ready
-        initYouTubePlayers();
+            // Store sliders in window object for global access
+            window.sliders = {};
+
+            // Initialize each slider separately
+            ['1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(num => {
+                const container = document.querySelector(`.project${num}-slider`);
+                if (container) {
+                    window.sliders[`slider${num}`] = tns({
+                        ...tnsOptions,
+                        container: `.project${num}-slider`
+                    });
+                }
+            });
+
+            // Initialize YouTube players after sliders are ready
+            initYouTubePlayers();
+        };
+        
+        // Start the preloading process
+        preloadImages();
 
     } catch (error) {
         console.error('Error initializing sliders:', error);
