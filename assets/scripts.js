@@ -298,7 +298,7 @@ function initializeSliders() {
             window.sliders = {};
 
             // Initialize each slider separately
-            ['1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(num => {
+            ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'].forEach(num => {
                 const container = document.querySelector(`.project${num}-slider`);
                 if (container) {
                     window.sliders[`slider${num}`] = tns({
