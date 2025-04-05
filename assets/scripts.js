@@ -1,3 +1,5 @@
+'use strict'; // Enable strict mode
+
 document.addEventListener('DOMContentLoaded', function() {
     const introVideo = document.getElementById('intro-video');
     const introContainer = document.getElementById('intro-video-container');
@@ -5,15 +7,33 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Defer loading of sliders and other content
     let contentLoaded = false;
+    let tinySliderLoaded = false;
+    let videoPlaybackFinished = false; // Flag for video ended, error, or skipped
     
-    // Function to load remaining content
+    // Function to attempt slider initialization only when ready
+    function attemptSliderInitialization() {
+        // Ensure tns function exists (means script loaded) and video is done
+        if (typeof tns === 'function' && videoPlaybackFinished) {
+             // Check if sliders were already initialized to prevent double init
+            if (!window.sliders || Object.keys(window.sliders).length === 0) {
+                 console.log("Conditions met: Initializing sliders now."); // For debugging
+                 initializeSliders();
+            }
+        } else {
+            console.log("Conditions not met for slider init:", { tinySliderAvailable: typeof tns === 'function', videoPlaybackFinished }); // For debugging
+        }
+    }
+    
+    // Function to load non-critical scripts (slider, gsap)
     function loadRemainingContent() {
         if (contentLoaded) return;
         contentLoaded = true;
+        console.log("Loading remaining content scripts..."); // For debugging
         
         // Load tiny-slider script dynamically
         const tinySliderScript = document.createElement('script');
         tinySliderScript.src = "https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js";
+        tinySliderScript.async = true; // Load asynchronously
         document.head.appendChild(tinySliderScript);
         
         // Load tiny-slider CSS
@@ -22,122 +42,135 @@ document.addEventListener('DOMContentLoaded', function() {
         tinySliderCSS.href = "https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css";
         document.head.appendChild(tinySliderCSS);
         
-        // Initialize sliders after tiny-slider loads
-        tinySliderScript.onload = initializeSliders;
+        // When tiny-slider script loads, set flag and attempt initialization
+        tinySliderScript.onload = () => {
+            console.log("Tiny-slider script loaded."); // For debugging
+            // Flag tinySliderLoaded implicitly by checking `typeof tns` in attemptSliderInitialization
+            // No need for a separate flag if we check the function directly.
+            attemptSliderInitialization(); // Check if video is already done
+        };
+        tinySliderScript.onerror = () => {
+            console.error("Failed to load tiny-slider script.");
+            // Sliders won't initialize, handle accordingly if needed
+        };
         
         // Load GSAP for advanced animations
         const gsapScript = document.createElement('script');
         gsapScript.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js";
+        gsapScript.async = true; // Load asynchronously
         document.head.appendChild(gsapScript);
         
         gsapScript.onload = function() {
-            // Initialize enhanced animations when GSAP loads
-            initEnhancedAnimations();
+            console.log("GSAP script loaded."); // For debugging
+            initEnhancedAnimations(); // GSAP animations can start when ready
         };
+        gsapScript.onerror = () => console.error("Failed to load GSAP script.");
+    }
+    
+    // Function to handle video completion (ended, error, skipped)
+    function handleVideoFinished() {
+        if (videoPlaybackFinished) return; // Prevent multiple calls
+        console.log("Video playback finished (ended, error, or skipped)."); // For debugging
+        videoPlaybackFinished = true; // Set the flag
+        
+        // Hide video container and show main content
+        if (introContainer) introContainer.classList.add('hidden');
+        if (mainContent) mainContent.classList.add('visible');
+        
+        // Attempt to initialize sliders now that the video is done
+        attemptSliderInitialization();
+        
+        // Clean up video container after transition
+        setTimeout(() => {
+            window.scrollTo(0, 0); // Ensure scroll to top after content appears
+            if (introContainer) introContainer.remove();
+        }, 700); // Match the CSS transition duration for opacity
     }
     
     // Start loading video immediately
     introVideo.load();
     
-    // When video can play through
+    // When video can play through, play it and start loading OTHER scripts
     introVideo.addEventListener('canplaythrough', function() {
-        introVideo.play();
-        // Start loading other content while video plays
+        introVideo.play().catch(error => {
+            console.error("Video play failed:", error);
+            handleVideoFinished(); // Treat inability to play as an error/skip
+        });
+        // Start loading secondary scripts (slider, gsap) in parallel with video playback
         loadRemainingContent();
     });
     
-    // When video ends
-    introVideo.addEventListener('ended', function() {
-        introContainer.classList.add('hidden');
-        mainContent.classList.add('visible');
-        
-        setTimeout(() => {
-            window.scrollTo(0, 0);
-            introContainer.remove();
-        }, 500);
+    // When video ends normally
+    introVideo.addEventListener('ended', handleVideoFinished);
+    
+    // If video fails to load or play
+    introVideo.addEventListener('error', function(e) {
+        console.error("Intro video error:", e);
+        handleVideoFinished();
     });
     
-    // Fallback in case video fails to load
-    introVideo.addEventListener('error', function() {
-        introContainer.classList.add('hidden');
-        mainContent.classList.add('visible');
-        introContainer.remove();
-        loadRemainingContent();
-    });
-    
-    // Optional: Skip intro if video takes too long to load
-    setTimeout(() => {
-        if (introVideo.readyState < 3) {
-            introContainer.classList.add('hidden');
-            mainContent.classList.add('visible');
-            introContainer.remove();
-            loadRemainingContent();
+    // Fallback: Skip intro if video takes too long to become playable
+    const videoLoadTimeout = setTimeout(() => {
+        // Check readyState: < 3 means it hasn't reached HAVE_FUTURE_DATA/CAN_PLAY_THROUGH
+        if (!videoPlaybackFinished && introVideo.readyState < 3) {
+            console.log("Video fallback timeout triggered (5s). Skipping video."); // Debug log
+            handleVideoFinished();
         }
-    }, 5000);
-
+    }, 5000); // 5 seconds
+    
     // Initialize tab functionality
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
     
-    function switchTab(targetTab) {
-        // Create a smoother transition between tabs
+    function switchTab(targetTab, clickedButton) {
         const activeContent = document.querySelector('.tab-content.active');
         
-        if (activeContent) {
-            activeContent.style.opacity = '0';
-            activeContent.style.transform = 'translateY(15px)';
-            
-            setTimeout(() => {
-                tabContents.forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                tabButtons.forEach(button => {
-                    button.classList.remove('active');
-                });
-                
-                const targetContent = document.getElementById(targetTab);
-                targetContent.classList.add('active');
-                
-                // Force reflow to ensure the animation runs
-                void targetContent.offsetWidth;
-                
-                targetContent.style.opacity = '1';
-                targetContent.style.transform = 'translateY(0)';
-                
-                document.querySelector(`[data-tab="${targetTab}"]`).classList.add('active');
-                
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }, 300);
-        } else {
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            tabButtons.forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            const targetContent = document.getElementById(targetTab);
+        // Deactivate all buttons and contents first
+        tabButtons.forEach(button => button.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active')); // Deactivate all content
+        
+        // Activate the target button and content
+        const targetContent = document.getElementById(targetTab);
+        if (targetContent) {
             targetContent.classList.add('active');
-            
-            document.querySelector(`[data-tab="${targetTab}"]`).classList.add('active');
         }
+        if (clickedButton) {
+            clickedButton.classList.add('active');
+        } else {
+            // Fallback for initial load
+            const buttonToActivate = document.querySelector(`[data-tab="${targetTab}"]`);
+            if (buttonToActivate) buttonToActivate.classList.add('active');
+        }
+        
+        // Scroll to top smoothly after the switch
+        // No need for setTimeout or manual style changes, CSS handles the transition
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     }
     
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
             const targetTab = button.getAttribute('data-tab');
-            switchTab(targetTab);
+            switchTab(targetTab, button);
         });
     });
     
+    // Initial tab setup
     if (tabButtons.length > 0) {
         const firstTab = tabButtons[0].getAttribute('data-tab');
-        switchTab(firstTab);
+        // Activate the first tab directly on load (CSS handles initial state)
+        const firstContent = document.getElementById(firstTab);
+        if (firstContent) {
+            firstContent.classList.add('active');
+            // Ensure initial styles are applied correctly for transition
+            // Setting opacity/transform directly might interfere with CSS transitions
+            // Let the initial state be handled by CSS rules for .tab-content and .tab-content.active
+        }
+        tabButtons[0].classList.add('active');
+         // Ensure initial scroll position is top
+        window.scrollTo(0, 0);
     }
 });
 
@@ -195,31 +228,30 @@ function initializeSliders() {
     try {
         // Preload images before initializing sliders
         const preloadImages = () => {
-            const sliderContainers = document.querySelectorAll('[class*="project"]:not([class*="project-"])');
+            const sliderContainers = document.querySelectorAll('div[class*="project"][class*="-slider"]:not([class*="project-"])');
             let imagesToLoad = 0;
             let imagesLoaded = 0;
-            
-            // Count all images that need to be loaded
+
             sliderContainers.forEach(container => {
                 const images = container.querySelectorAll('img');
                 imagesToLoad += images.length;
-                
-                // Force load images and track progress
+
                 images.forEach(img => {
-                    // If image is already loaded or has error
+                    // Explicitly set eager loading if needed, though removing 'lazy' is preferred in HTML
+                    // img.loading = 'eager';
+
                     if (img.complete) {
                         imagesLoaded++;
                         return;
                     }
-                    
-                    // Add load and error event listeners
+
                     img.addEventListener('load', () => {
                         imagesLoaded++;
                         if (imagesLoaded === imagesToLoad) {
                             initSliders();
                         }
                     });
-                    
+
                     img.addEventListener('error', () => {
                         imagesLoaded++;
                         console.error('Error loading image:', img.src);
@@ -227,27 +259,22 @@ function initializeSliders() {
                             initSliders();
                         }
                     });
-                    
-                    // Force reload if needed
-                    if (img.getAttribute('loading') === 'lazy') {
-                        img.setAttribute('loading', 'eager');
-                    }
-                    
-                    // Ensure src is set
+
+                    // Force reload if needed (keep this part of preloading logic)
                     if (img.src) {
                         const currentSrc = img.src;
-                        img.src = '';
-                        img.src = currentSrc;
+                        img.src = ''; // Clear src first
+                        img.src = currentSrc; // Re-assign to trigger load
                     }
                 });
             });
-            
-            // If no images or all images already loaded
+
             if (imagesToLoad === 0 || imagesLoaded === imagesToLoad) {
+                // If all images are ready (or no images), proceed to init
                 initSliders();
             }
         };
-        
+
         // Initialize the actual sliders
         const initSliders = () => {
             const tnsOptions = {
@@ -261,57 +288,70 @@ function initializeSliders() {
                 autoplayTimeout: 5000,
                 speed: 600,
                 mode: 'carousel',
-                animateIn: 'fadeIn',
-                animateOut: 'fadeOut',
+                // Using default fade effect is often more robust than custom animateIn/Out
+                // animateIn: 'fadeIn', // Consider removing if causing issues
+                // animateOut: 'fadeOut', // Consider removing if causing issues
                 responsive: {
-                    0: {
-                        items: 1,
-                        gutter: 0
-                    },
-                    640: {
-                        items: 1,
-                        gutter: 20
-                    }
+                    0: { items: 1, gutter: 0 },
+                    640: { items: 1, gutter: 20 }
                 },
                 preventScrollOnTouch: 'auto',
                 touch: true,
                 mouseDrag: true,
-                lazyload: false, // Disable tiny-slider's built-in lazy loading
-                onInit: function() {
-                    // Fix for image display issues - ensure proper rendering after init
-                    setTimeout(() => {
-                        const sliderItems = document.querySelectorAll('.tns-item');
-                        sliderItems.forEach(item => {
-                            const img = item.querySelector('img');
-                            if (img) {
-                                // Force a reflow/repaint
-                                img.style.display = 'none';
-                                void img.offsetHeight; // Trigger reflow
-                                img.style.display = '';
-                            }
-                        });
-                    }, 100);
+                lazyload: false, // Keep disabled
+                onInit: function(info) {
+                    // REMOVED the forced reflow hack.
+                    // console.log('Slider initialized:', info.container);
                 }
             };
 
-            // Store sliders in window object for global access
             window.sliders = {};
+            const sliderContainers = document.querySelectorAll('div[class*="project"][class*="-slider"]:not([class*="project-"])');
 
-            // Initialize each slider separately
-            ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'].forEach(num => {
-                const container = document.querySelector(`.project${num}-slider`);
-                if (container) {
-                    window.sliders[`slider${num}`] = tns({
-                        ...tnsOptions,
-                        container: `.project${num}-slider`
-                    });
+            sliderContainers.forEach(container => {
+                const match = container.className.match(/project(\d+)-slider/);
+                if (match && match[1]) {
+                    const sliderId = match[1];
+                    const sliderKey = `slider${sliderId}`;
+                    const containerSelector = `.${container.className.split(' ').join('.')}`;
+
+                    // **DELAY INITIALIZATION**
+                    // Wrap the tns() call in setTimeout 0
+                    setTimeout(() => {
+                        try {
+                            // Check if container still exists (robustness)
+                            if (document.querySelector(containerSelector)) {
+                                window.sliders[sliderKey] = tns({
+                                    ...tnsOptions,
+                                    container: containerSelector
+                                });
+                                // Initialize YouTube players *after* all sliders have attempted init
+                                // This might need adjustment if YouTube init depends on slider state immediately
+                                if (Object.keys(window.sliders).length === sliderContainers.length) {
+                                    initYouTubePlayers();
+                                }
+                            }
+                        } catch(e) {
+                            console.error(`Failed to initialize slider for ${containerSelector} inside setTimeout:`, e);
+                        }
+                    }, 0); // Delay of 0ms pushes execution to next event loop cycle
+
+                } else {
+                    console.warn("Could not extract slider ID from class:", container.className);
                 }
             });
 
-            // Initialize YouTube players after sliders are ready
-            initYouTubePlayers();
+            // Move YouTube init call inside the setTimeout callback
+            // or handle it separately if it doesn't strictly depend on sliders being fully ready
+            // If initYouTubePlayers doesn't rely on slider instances immediately,
+            // it could potentially be called once after the loop finishes.
+            // Let's assume it's safer to call it after all initializations are attempted.
+            // Note: The check inside setTimeout ensures it's called only once.
+            if (sliderContainers.length === 0) {
+                 initYouTubePlayers(); // Call if there are no sliders
+            }
         };
-        
+
         // Start the preloading process
         preloadImages();
 
