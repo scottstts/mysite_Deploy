@@ -1,3 +1,3 @@
 # My Website Repo
 
-**Visit at *https://scottsun.xyz***
+**Visit at *https://scottsun.io***
