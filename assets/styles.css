@@ -1014,7 +1014,7 @@ html {
     border-radius: 0.75rem;
 }
 
-.glass-card:hover img {
+.glass-card:hover img:not(.tns-item img) {
     transform: scale(1.03) translateY(-3px);
 }
 
