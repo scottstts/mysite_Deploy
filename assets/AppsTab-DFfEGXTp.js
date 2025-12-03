@@ -1,4 +1,4 @@
-import{j as e,H as l}from"./index-CHO8wOdB.js";import{G as n}from"./GlassCard-BVT-NjOr.js";import{I as d}from"./ImageSlider-DjGRtWdD.js";import{s as a}from"./safeHtml-CywaOwmt.js";const c=[{id:"ingrelab",projectId:9,title:"IngreLab",tagline:"Food Intelligence.",description:`These days we rarely know what is in our food. High sugar, high inflammatory, ultra-processed food has taken up a huge portion of our daily food intake.<br><br>
+import{j as e,H as l}from"./index-SMORloK1.js";import{G as n}from"./GlassCard-CV47u4I-.js";import{I as d}from"./ImageSlider-BwwnYm0l.js";import{s as a}from"./safeHtml-CywaOwmt.js";const c=[{id:"ingrelab",projectId:9,title:"IngreLab",tagline:"Food Intelligence.",description:`These days we rarely know what is in our food. High sugar, high inflammatory, ultra-processed food has taken up a huge portion of our daily food intake.<br><br>
 
 IngreLab peels away the fancy packaging and drills down to the ingredients. You just scan the barcode, and it analyzes these health risk factors and builds a risk profile on the ingredients.<br><br>
 
