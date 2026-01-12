@@ -1,4 +1,4 @@
-# My Website Deployed Repo
+# My Website Deployment Repo
 
 **Visit at *https://scottsun.io***
 
