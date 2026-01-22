@@ -1,4 +1,4 @@
-import{j as e,H as l}from"./index-BIdLquty.js";import{G as a}from"./GlassCard-CZaL-SDa.js";import{I as d}from"./ImageSlider-DjeGXcG5.js";import{s as i}from"./safeHtml-CywaOwmt.js";const u=[{id:"ingrelab",appId:1,title:"IngreLab",tagline:"Food Intelligence.",description:`These days we rarely know what is in our food. High sugar, high inflammatory, ultra-processed food has taken up a huge portion of our daily food intake.<br><br>
+import{j as e,H as l}from"./index-nI5-doEp.js";import{G as a}from"./GlassCard-DoQ2Rjtm.js";import{I as d}from"./ImageSlider-4NZlzMS2.js";import{s as i}from"./safeHtml-CywaOwmt.js";const u=[{id:"ingrelab",appId:1,title:"IngreLab",tagline:"Food Intelligence.",description:`These days we rarely know what is in our food. High sugar, high inflammatory, ultra-processed food has taken up a huge portion of our daily food intake.<br><br>
 
 IngreLab peels away the fancy packaging and drills down to the ingredients. You just scan the barcode, and it analyzes these health risk factors and builds a risk profile on the ingredients.<br><br>
 
@@ -10,11 +10,15 @@ We all should know what we eat. IngreLab powers your “Food Intelligence”.`,i
     
     Happy practicing!`,images:["tuneitall1.jpeg","tuneitall2.jpeg","tuneitall3.jpeg","tuneitall4.jpeg"],link:"https://tuneitall.scottsun.io",showLink:!0},{id:"mycraft",appId:3,title:"MyCraft",tagline:"It's cozy in the browser.",description:`MyCraft is a MineCraft-like mini game that runs in your browser. I made it with React and Three.js.<br><br>
     
-    Enjoy the sunny beams, cozy view, and smooth music. And you might even build something here and share it with your friends.`,images:["mycraft_start.jpeg","mycraft_world.jpeg","mycraft_sunset.jpeg","mycraft_underwater.jpeg"],videos:[{id:"app-youtube-player-2",videoId:"Jxn7g5fzAto",title:"MyCraft"}],link:"https://mycraft.scottsun.io",showLink:!0},{id:"learntube",appId:4,title:"LearnTube",tagline:"Video to insights in seconds.",description:`Unlock the full potential of YouTube videos with LearnTube. Provide a YouTube video link, and LearnTube delivers a tailored report on the video's content, customized to your preferred length and depth. Whether you want a concise overview or a detailed breakdown, LearnTube adapts to your needs.<br><br>
+    Enjoy the sunny beams, cozy view, and smooth music. And you might even build something here and share it with your friends.`,images:["mycraft_start.jpeg","mycraft_world.jpeg","mycraft_sunset.jpeg","mycraft_underwater.jpeg"],videos:[{id:"app-youtube-player-2",videoId:"Jxn7g5fzAto",title:"MyCraft"}],link:"https://mycraft.scottsun.io",showLink:!0},{id:"learntube",appId:4,title:"LearnTube",tagline:"Video to insights in seconds.",description:`Too many long-form podcasts and interviews and no time to watch? Just copy the video link, and LearnTube lays insights bare in seconds.<br><br>
 
-Interact seamlessly with AI: chat to ask questions about the video or select any sentence from the report for deeper elaboration. Generate Mind Map on the fly for conceptual and structural understanding. Save and share the insights by exporting reports to PDF, and keep your projects organized in the Collection tab for easy access anytime.<br><br>
+• A report on the video exploring content<br><br>
+• Ask any questions about the video<br><br>
+• Select any part of the report for deeper elaboration<br><br>
+• Generate Mind Map on the fly for conceptual and structural understanding<br><br>
+• Share the report with anyone with a URL or save it as a PDF<br><br>
 
-Tailored for YouTube—especially long-form interviews and podcasts—LearnTube is your dedicated companion, saving time with quick TL;DW (Too Long; Didn't Watch) summaries or offering in-depth explorations, all at your fingertips.`,images:["learntube1.jpeg","learntube2.jpeg","learntube3.jpeg","learntube4.jpeg","learntube5.jpeg","learntube6.jpeg"],videos:[{id:"app-youtube-player-3",videoId:"vj1on8ByEmg",title:"Use LearnTube | Video to insights to seconds"}],link:"https://learntube.scottsun.io",showLink:!0},{id:"voxelit",appId:5,title:"Voxelit",tagline:"Voxel scene to code.",description:`Voxelit is a Blender-like tiny voxel 3D editor.<br><br>
+TL;DW (Too Long; Don't Watch) summaries or in-depth explorations, all in seconds.`,images:["learntube1.jpeg","learntube2.jpeg","learntube3.jpeg","learntube4.jpeg","learntube5.jpeg","learntube6.jpeg"],videos:[{id:"app-youtube-player-3",videoId:"vj1on8ByEmg",title:"Use LearnTube | Video to insights to seconds"}],link:"https://learntube.scottsun.io",showLink:!0},{id:"voxelit",appId:5,title:"Voxelit",tagline:"Voxel scene to code.",description:`Voxelit is a Blender-like tiny voxel 3D editor.<br><br>
     
     You can build complex Minecraft-style scenes here, apply procedural and texture shaders, add and adjust lighting, and finally export your scene as is in HTML or TSX.<br><br>
     

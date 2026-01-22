@@ -1,4 +1,4 @@
-import{r as f,j}from"./index-BIdLquty.js";const B=15,N=1e3,O=`
+import{r as f,j}from"./index-nI5-doEp.js";const B=15,N=1e3,O=`
   attribute vec3 aPosition;
   uniform mat4 uProjectionMatrix;
   uniform mat4 uModelViewMatrix;
