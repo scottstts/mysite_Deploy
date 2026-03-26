@@ -1,4 +1,4 @@
-import{j as e,H as l}from"./index-CtcNAEJK.js";import{G as a}from"./GlassCard-CZdcqQEd.js";import{I as d}from"./ImageSlider-bcNyKuQh.js";import{s as n}from"./safeHtml-CywaOwmt.js";const u=[{id:"jarvis",title:"Jarvis",tagline:"Your AI assistant should be classy.",description:`Jarvis is arguably my favorite AI assistant from any sci-fi stories. He's capable, low key, intelligent, and witty. He is my idea of how a personal AI assistant should be like. Watching Iron Man has been a great inspiration.<br><br>
+import{j as e,H as l}from"./index-BazrnXF_.js";import{G as a}from"./GlassCard-NgmDeeGR.js";import{I as d}from"./ImageSlider-DZJaH56-.js";import{s as n}from"./safeHtml-CywaOwmt.js";const u=[{id:"jarvis",title:"Jarvis",tagline:"Your AI assistant should be classy.",description:`Jarvis is arguably my favorite AI assistant from any sci-fi stories. He's capable, low key, intelligent, and witty. He is my idea of how a personal AI assistant should be like. Watching Iron Man has been a great inspiration.<br><br>
 
 Now we finally have the technology to build this out, or ... close enough.<br><br>
 
