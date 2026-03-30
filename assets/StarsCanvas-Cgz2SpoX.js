@@ -1,4 +1,4 @@
-import{r as p,j as D}from"./index-BazrnXF_.js";const N=15,O=1e3,H=`
+import{r as p,j as D}from"./index-wYMbE617.js";const N=15,O=1e3,H=`
   attribute vec3 aPosition;
   attribute float aSeed;
   uniform mat4 uProjectionMatrix;
