@@ -29,7 +29,10 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://scottsun.io" />
-    <meta property="og:image" content="https://scottsun.io/static_assets/og_cover.jpeg" />
+    <meta
+      property="og:image"
+      content="https://scottsun.io/static_assets/og_cover.jpeg"
+    />
     <meta property="og:site_name" content="Scott Sun" />
     <meta property="og:locale" content="en_US" />
 
@@ -44,7 +47,10 @@
       name="twitter:description"
       content="Scott Sun | Frontier AI Chaser. Build Stuff."
     />
-    <meta name="twitter:image" content="https://scottsun.io/static_assets/og_cover.jpeg" />
+    <meta
+      name="twitter:image"
+      content="https://scottsun.io/static_assets/og_cover.jpeg"
+    />
     <meta name="twitter:image:alt" content="Scott Sun" />
 
     <link rel="icon" type="image/jpg" href="/static_assets/logo.png" />
@@ -55,7 +61,11 @@
     <!-- SEO tags -->
 
     <!-- LLM-friendly plain text version of this site -->
-    <link rel="alternate" type="text/plain" href="https://scottsun.io/llms.txt" />
+    <link
+      rel="alternate"
+      type="text/plain"
+      href="https://scottsun.io/llms.txt"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -70,9 +80,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!-- Instagram preconnect optimizations -->
-    <link rel="preconnect" href="https://static.cdninstagram.com" crossorigin />
-
     <!-- Critical Path Intro Video Styles -->
     <style>
       #intro-video-container {
@@ -102,7 +109,9 @@
       #intro-video-badge {
         position: fixed;
         right: calc(env(safe-area-inset-right, 0px) + clamp(14px, 2.2vw, 24px));
-        bottom: calc(env(safe-area-inset-bottom, 0px) + clamp(14px, 2.2vw, 24px));
+        bottom: calc(
+          env(safe-area-inset-bottom, 0px) + clamp(14px, 2.2vw, 24px)
+        );
         z-index: 51;
         display: inline-flex;
         align-items: center;
@@ -176,8 +185,8 @@
         }
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-CKdIgwaC.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CRhp6vlJ.css">
+    <script type="module" crossorigin src="/assets/index-B4dowjmw.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B1COAd3p.css">
   </head>
 
   <body>
@@ -264,18 +273,6 @@
         let videoFinished = false;
         let badgeShown = false;
 
-        const preloadBackgroundVideo = () => {
-          if (document.querySelector('link[data-bg-video-preload]')) return;
-
-          const preloadLink = document.createElement('link');
-          preloadLink.rel = 'preload';
-          preloadLink.as = 'video';
-          preloadLink.href = '/static_assets/bg_video.webm';
-          preloadLink.type = 'video/webm';
-          preloadLink.setAttribute('data-bg-video-preload', 'true');
-          document.head.appendChild(preloadLink);
-        };
-
         const showBadge = () => {
           if (badgeShown || videoFinished) return;
           badgeShown = true;
@@ -326,9 +323,6 @@
         };
 
         // Video Event Listeners
-        video.addEventListener('loadeddata', preloadBackgroundVideo, {
-          once: true,
-        });
         video.addEventListener('playing', showBadge, { once: true });
         video.addEventListener('ended', finishVideo);
         video.addEventListener('error', (e) => {
@@ -529,14 +523,6 @@
 <li>Source Repo: https://github.com/scottstts/mysite_React</li>
 </ul>
 </article></div>
-
-    <!-- Instagram embed SDK -->
-    <script
-      async
-      defer
-      src="https://www.instagram.com/embed.js"
-      crossorigin
-    ></script>
 
     <!-- YouTube iframe API -->
     <script src="https://www.youtube.com/iframe_api" async></script>
