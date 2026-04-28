@@ -1,4 +1,4 @@
-import{r as f,j as W}from"./index-CMj5Cgjh.js";const K=15,X=1e3,Z=800,q=420,G=1e3/30,Q=.85,J="(max-width: 767px), (pointer: coarse)",$=`
+import{r as f,j as W}from"./index-Sy9jDHH3.js";const K=15,X=1e3,Z=800,q=420,G=1e3/30,Q=.85,J="(max-width: 767px), (pointer: coarse)",$=`
   attribute vec3 aPosition;
   attribute float aSeed;
   uniform mat4 uProjectionMatrix;
