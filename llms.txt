@@ -27,9 +27,10 @@ Acceleration follows an exponential curve while human imagination remains confin
 
 #### I'm on
 
-- X (Twitter): [@scottstts](https://x.com/scottstts)
+- X (Twitter): [@scottstts](https://x.com/scottstts/)
 - LinkedIn: [Scott Sun](https://www.linkedin.com/in/st-scottsun-inireland/)
-- GitHub: [scottstts](https://github.com/scottstts)
+- GitHub: [scottstts](https://github.com/scottstts/)
+- Instagram: [@scottstts] (https://www.instagram.com/scottstts/)
 
 ---
 
@@ -290,4 +291,4 @@ There is a profound wisdom from him and his philosophy that I find extremely enc
 ## Source
 
 - Website: https://scottsun.io
-- Source Repo: https://github.com/scottstts/mysite_React
+- Source: https://github.com/scottstts/mysite_React
