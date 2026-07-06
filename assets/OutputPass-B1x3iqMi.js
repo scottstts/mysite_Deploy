@@ -1,4 +1,4 @@
-import{U as o,R as n,b as r,c as s,L as l,d as p,e as g,f,g as _,h as u,i as h}from"./ArtInLifeGallery-PAU9BxbP.js";import{P as M,F as m}from"./Pass-1ZuqwMDB.js";import"./index-DY_MUTlQ.js";import"./ArtInLifeTab.module-CrpLW5Of.js";const i={name:"OutputShader",uniforms:{tDiffuse:{value:null},toneMappingExposure:{value:1}},vertexShader:`
+import{U as o,R as n,b as r,c as s,L as l,d as p,e as g,f,g as _,h as u,i as h}from"./ArtInLifeGallery-bVOONEoZ.js";import{P as M,F as m}from"./Pass-DS3E4wIQ.js";import"./index-BK76EaEE.js";import"./ArtInLifeTab.module-CrpLW5Of.js";const i={name:"OutputShader",uniforms:{tDiffuse:{value:null},toneMappingExposure:{value:1}},vertexShader:`
 		precision highp float;
 
 		uniform mat4 modelViewMatrix;
