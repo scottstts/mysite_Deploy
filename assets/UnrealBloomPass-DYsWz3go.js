@@ -1,4 +1,4 @@
-import{C as b,V as u,W as v,H as p,U as T,S as f,a as h,A as M,M as C}from"./ArtInLifeGallery-DDhQ22YG.js";import{P as S,F as U}from"./Pass-ChANHpk1.js";import{C as g}from"./CopyShader-BzTUYzf6.js";import"./index-Ym-DMcUz.js";import"./ArtInLifeTab.module-CrpLW5Of.js";const _={uniforms:{tDiffuse:{value:null},luminosityThreshold:{value:1},smoothWidth:{value:1},defaultColor:{value:new b(0)},defaultOpacity:{value:0}},vertexShader:`
+import{C as b,V as u,W as v,H as p,U as T,S as f,a as h,A as M,M as C}from"./ArtInLifeGallery-DxyI9YXv.js";import{P as S,F as U}from"./Pass-D54hw_JS.js";import{C as g}from"./CopyShader-BzTUYzf6.js";import"./index-CFuJQb9e.js";import"./ArtInLifeTab.module-CrpLW5Of.js";const _={uniforms:{tDiffuse:{value:null},luminosityThreshold:{value:1},smoothWidth:{value:1},defaultColor:{value:new b(0)},defaultOpacity:{value:0}},vertexShader:`
 
 		varying vec2 vUv;
 
