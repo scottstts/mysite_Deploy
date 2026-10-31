@@ -6,9 +6,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Scott Sun</title>
-    <link rel="icon" type="image/jpg" href="/static_assets/logo.png" />
+    <link rel="icon" type="image/png" href="/static_assets/logo.png" />
     <link rel="canonical" href="https://scottsun.io/" />
 
     <!-- SEO tags -->
@@ -53,7 +52,6 @@
     />
     <meta name="twitter:image:alt" content="Scott Sun" />
 
-    <link rel="icon" type="image/jpg" href="/static_assets/logo.png" />
     <link rel="apple-touch-icon" href="/static_assets/logo.png" />
 
     <meta name="robots" content="index, follow" />
@@ -70,276 +68,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Eater&family=Outfit:wght@400;700;800&family=Roboto+Mono:wght@400;500;600;700&family=Roboto+Slab:wght@100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..700;1,7..72,200..600&family=Outfit:wght@700&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!-- Critical Path Intro Video Styles -->
-    <style>
-      #intro-video-container {
-        position: fixed;
-        inset: 0;
-        z-index: 50;
-        background-color: black;
-        transition: opacity 0.7s ease-out;
-        /* CSS variables set dynamically by intro script */
-        --intro-video-pos-desktop: center center;
-        --intro-video-pos-mobile: center center;
-      }
-
-      #intro-video-container.fade-out {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      #intro-video {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: var(--intro-video-pos-desktop);
-      }
-
-      #intro-video-badge {
-        position: fixed;
-        right: calc(env(safe-area-inset-right, 0px) + clamp(14px, 2.2vw, 24px));
-        bottom: calc(
-          env(safe-area-inset-bottom, 0px) + clamp(14px, 2.2vw, 24px)
-        );
-        z-index: 51;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: clamp(72px, 7vw, 100px);
-        aspect-ratio: 1;
-        padding: clamp(8px, 1vw, 12px);
-        border-radius: 50%;
-        background: rgba(36, 36, 36, 0.42);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.34);
-        opacity: 0;
-        visibility: hidden;
-        transform: translate3d(0, 8px, 0);
-        transition:
-          opacity 0.12s ease-out,
-          transform 0.12s ease-out,
-          visibility 0s linear 0.12s;
-        will-change: opacity, transform;
-        contain: layout paint;
-        pointer-events: none;
-        user-select: none;
-      }
-
-      #intro-video-badge.is-visible {
-        opacity: 1;
-        visibility: visible;
-        transform: translate3d(0, 0, 0);
-        transition-delay: 0s;
-      }
-
-      #intro-video-badge-logo {
-        display: block;
-        width: 100%;
-        height: auto;
-        flex-shrink: 0;
-      }
-
-      /* Mobile portrait: extend container to cover bottom, bias framing horizontally while anchoring to bottom */
-      @media (max-width: 900px) and (orientation: portrait) {
-        #intro-video-container {
-          top: -60px;
-          bottom: 0;
-          height: calc(100vh + 120px);
-        }
-
-        #intro-video {
-          object-position: var(--intro-video-pos-mobile);
-        }
-
-        #intro-video-badge {
-          right: calc(env(safe-area-inset-right, 0px) + 14px);
-          bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
-          width: 64px;
-          padding: 8px;
-        }
-      }
-    </style>
-    <script type="module" crossorigin src="/assets/index-A_m2kIts.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CycT7t39.css">
+    <script type="module" crossorigin src="/assets/index-Dth_Lw1H.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BR7LfV36.css">
   </head>
 
   <body>
     <!-- Redirect automated crawlers to the plain-text content file -->
     <script>
       if (navigator.webdriver) window.location.replace('/llms.txt');
-    </script>
-
-    <div
-      id="intro-video-container"
-      role="banner"
-      aria-label="Introduction video"
-    >
-      <video id="intro-video" playsinline muted preload="auto">
-        <!-- Source is set dynamically by intro script -->
-      </video>
-      <div id="intro-video-badge" aria-hidden="true">
-        <img
-          id="intro-video-badge-logo"
-          src="/static_assets/blender-logo.png"
-          alt=""
-          width="960"
-          height="785"
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-    </div>
-
-    <script>
-      (function () {
-        // ============================================
-        // INTRO VIDEO POOL CONFIGURATION
-        // Add new videos here with their cropping strategies
-        // ============================================
-        const introVideos = [
-          {
-            src: '/intros/intro1.mp4',
-            // Desktop: object-position value
-            desktopPosition: 'bottom right',
-            // Mobile: horizontal% vertical (used in object-position)
-            mobilePosition: '28.5% bottom',
-          },
-          {
-            src: '/intros/intro2.mp4',
-            desktopPosition: 'top right',
-            mobilePosition: '49% center',
-          },
-          {
-            src: '/intros/intro3.mp4',
-            desktopPosition: 'bottom right',
-            mobilePosition: '65% center',
-          },
-          {
-            src: '/intros/intro4.mp4',
-            desktopPosition: 'top left',
-            mobilePosition: '60% center',
-          },
-          {
-            src: '/intros/intro5.mp4',
-            desktopPosition: 'bottom right',
-            mobilePosition: '55% center',
-          },
-        ];
-
-        // Randomly select a video from the pool
-        const selectedVideo =
-          introVideos[Math.floor(Math.random() * introVideos.length)];
-
-        // Viewport height fix for mobile
-        const setViewportHeightVar = () => {
-          const vh = window.innerHeight * 0.01;
-          document.documentElement.style.setProperty('--vh', `${vh}px`);
-        };
-        setViewportHeightVar();
-        window.addEventListener('resize', setViewportHeightVar);
-        window.addEventListener('orientationchange', setViewportHeightVar);
-
-        const container = document.getElementById('intro-video-container');
-        const video = document.getElementById('intro-video');
-        const badge = document.getElementById('intro-video-badge');
-        const badgeLogo = document.getElementById('intro-video-badge-logo');
-        let videoFinished = false;
-        let badgeVisible = false;
-
-        const showBadge = () => {
-          if (badgeVisible || videoFinished || video.paused) return;
-          badgeVisible = true;
-          badge.classList.add('is-visible');
-        };
-
-        const hideBadge = () => {
-          if (!badgeVisible) return;
-          badgeVisible = false;
-          badge.classList.remove('is-visible');
-        };
-
-        if (badgeLogo && !badgeLogo.complete) {
-          badgeLogo.decode().catch(() => {
-            // Ignore decode failures and let the browser paint the image normally.
-          });
-        }
-
-        // Set the video source and apply cropping strategies
-        const source = document.createElement('source');
-        source.src = selectedVideo.src;
-        source.type = 'video/mp4';
-        video.appendChild(source);
-        container.style.setProperty(
-          '--intro-video-pos-desktop',
-          selectedVideo.desktopPosition
-        );
-        container.style.setProperty(
-          '--intro-video-pos-mobile',
-          selectedVideo.mobilePosition
-        );
-
-        // Function to signal completion to the React app
-        const finishVideo = () => {
-          if (videoFinished) return;
-          hideBadge();
-          videoFinished = true;
-
-          // Add fade-out class
-          container.classList.add('fade-out');
-
-          // Dispatch custom event for React to listen to
-          window.dispatchEvent(new CustomEvent('intro-video-complete'));
-
-          // Add class to body for React to check initial state if it loads late
-          document.body.classList.add('intro-complete');
-
-          // Remove from DOM after transition
-          setTimeout(() => {
-            if (container.parentNode) {
-              container.parentNode.removeChild(container);
-            }
-            window.scrollTo(0, 0);
-          }, 700);
-        };
-
-        // Video Event Listeners
-        video.addEventListener('playing', showBadge);
-        video.addEventListener('pause', hideBadge);
-        video.addEventListener('waiting', hideBadge);
-        video.addEventListener('stalled', hideBadge);
-        video.addEventListener('emptied', hideBadge);
-        video.addEventListener('ended', finishVideo);
-        video.addEventListener('error', (e) => {
-          console.error('Video error:', e);
-          finishVideo();
-        });
-
-        // Attempt to play immediately
-        video.play().catch((e) => {
-          console.log('Autoplay failed or blocked, finishing intro:', e);
-          finishVideo();
-        });
-
-        // Fallback timeout (5s)
-        setTimeout(() => {
-          if (!videoFinished && video.readyState < 3) {
-            console.warn('Video fallback timeout.');
-            finishVideo();
-          }
-        }, 5000);
-      })();
     </script>
 
     <div id="root"><article style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">
@@ -354,29 +93,29 @@
 <p>I believe that all problems are eventually solvable through technology without introducing any additional externality. Technology evolves—gradually or rapidly—to match the complexity of problems. Today's flawed solutions will never capture how easily these problems may be resolved in the future.</p>
 <p>Technology emerges from the interactions between intelligent entities and the universe they inhabit, while intelligence improves and evolves through technology. Technology is not only an external manifestation of intelligence but it stands as the ultimate culmination.</p>
 <p>Intelligence is the meta-problem underlying all challenges. Once intelligence is solved, we indirectly unlock solutions to every problem. The acceleration of ASI injects a second-order surge into all frontier sciences and engineering, placing us at an inflection point where the future will be unrecognizably better.</p>
-<p>The exponential growth of compute power, digital data &amp; artifacts, and nn-based AI signals a broad intelligence revolution in both scale and depth.</p>
+<p>The exponential growth of compute power, digital data and artifacts, and nn-based AI signals a broad intelligence revolution in both scale and depth.</p>
 <p>Technology has also been historically proven to be the only robust, consistent, and effective means to combat various social disparities, both directly and indirectly.</p>
 <p>Acceleration follows an exponential curve while human imagination remains confined to linear velocity. A fundamental transformation may be daunting, yet it is equally if not more exhilarating, for the only way forward is <em>into the unknown</em>.</p>
 <h4>Highlight</h4>
-<p><strong>My Three.js Games</strong></p>
+<p><strong>Build Dreams</strong></p>
 <p>I like to dream, and I like to make that dream appear before my eyes. Making games and experiences on Three.js with AI has become one of my biggest hobbies, I get to be the architect of a world I want to visit and be immersed in. It is truly remarkable.</p>
 <p><strong>Videos:</strong></p>
 <ul>
-<li><a href="https://youtu.be/o_USermt690" data-media-type="video">My Three.js Games — Video 1</a></li>
-<li><a href="https://youtu.be/sH4emb3Sff8" data-media-type="video">My Three.js Games — Video 2</a></li>
-<li><a href="https://youtu.be/B3BaLHv6qqM" data-media-type="video">My Three.js Games — Video 3</a></li>
-<li><a href="https://youtu.be/Y2psQc6GEb0" data-media-type="video">My Three.js Games — Video 4</a></li>
-<li><a href="https://youtu.be/CyIb1XJU9SQ" data-media-type="video">My Three.js Games — Video 5</a></li>
-<li><a href="https://youtu.be/-i1vPXEoNXg" data-media-type="video">My Three.js Games — Video 6</a></li>
-<li><a href="https://youtu.be/kmueNuoSMaI" data-media-type="video">My Three.js Games — Video 7</a></li>
-<li><a href="https://youtu.be/4aNivsxDA_Y" data-media-type="video">My Three.js Games — Video 8</a></li>
+<li><a href="https://youtu.be/o_USermt690" data-media-type="video">Build Dreams — Video 1</a></li>
+<li><a href="https://youtu.be/sH4emb3Sff8" data-media-type="video">Build Dreams — Video 2</a></li>
+<li><a href="https://youtu.be/B3BaLHv6qqM" data-media-type="video">Build Dreams — Video 3</a></li>
+<li><a href="https://youtu.be/Y2psQc6GEb0" data-media-type="video">Build Dreams — Video 4</a></li>
+<li><a href="https://youtu.be/CyIb1XJU9SQ" data-media-type="video">Build Dreams — Video 5</a></li>
+<li><a href="https://youtu.be/-i1vPXEoNXg" data-media-type="video">Build Dreams — Video 6</a></li>
+<li><a href="https://youtu.be/kmueNuoSMaI" data-media-type="video">Build Dreams — Video 7</a></li>
+<li><a href="https://youtu.be/4aNivsxDA_Y" data-media-type="video">Build Dreams — Video 8</a></li>
 </ul>
 <h4>Find me on</h4>
 <ul>
-<li>X: <a href="https://x.com/scottstts/">@scottstts</a></li>
-<li>LinkedIn: <a href="https://www.linkedin.com/in/st-scottsun-inireland/">Scott Sun</a></li>
-<li>GitHub: <a href="https://github.com/scottstts/">scottstts</a></li>
+<li>GitHub: <a href="https://github.com/scottstts">scottstts</a></li>
+<li>X: <a href="https://x.com/scottstts">@scottstts</a></li>
 <li>Instagram: <a href="https://www.instagram.com/scottstts/">@scottstts</a></li>
+<li>LinkedIn: <a href="https://www.linkedin.com/in/st-scottsun-inireland/">Scott Sun</a></li>
 </ul>
 <hr>
 <h2>Portfolio</h2>
@@ -392,7 +131,7 @@
 </ul>
 <p>In the year 2127, humanity created its first Dyson sphere around Alpha Centauri A, a 2 million kilometer diameter structure, and started the "Astro-Industrial Era." On the inner side of this lonely structure is a small city called Dyson City for research purposes. You have been elected to be the lone guardian of this city.</p>
 <p>You have your own estate in Dyson City, and you've chosen to make it a Victorian style manor. The rest of the city is a 200 acre golden scientific-industrial compound.</p>
-<p>You have your own vehicle called Aurelia to take you anywhere in this city. A fleet of research spacecraft come in every 30s for data backup and refueling.</p>
+<p>You have your own AI called Aurelia to guide you in this city. A fleet of research spacecraft come in every 30s for data backup and refueling.</p>
 <p>Now you're in charge.</p>
 <ul>
 <li>Link: https://dyson.scottsun.io</li>
@@ -413,10 +152,10 @@
 <li>Link: https://transformer.scottsun.io</li>
 </ul>
 <h3>Jelly Baby</h3>
-<p><strong>Tagline:</strong> Bouncy fun.</p>
+<p><strong>Tagline:</strong> Gelatinous fun.</p>
 <p><strong>Videos:</strong></p>
 <ul>
-<li><a href="https://youtu.be/CyIb1XJU9SQ" data-media-type="video">Bouncy Jelly Baby Game</a></li>
+<li><a href="https://youtu.be/CyIb1XJU9SQ" data-media-type="video">Jelly Baby</a></li>
 </ul>
 <p>Started as a jelly physics simulation demo which seemed well received, so I goofed off and made this Jelly Baby game with the same physics engine and softbody kernel.</p>
 <ul>
@@ -788,8 +527,5 @@
 <li>Source: https://github.com/scottstts/mysite_React</li>
 </ul>
 </article></div>
-
-    <!-- YouTube iframe API -->
-    <script src="https://www.youtube.com/iframe_api" async></script>
   </body>
 </html>

@@ -19,7 +19,7 @@ Technology emerges from the interactions between intelligent entities and the un
 
 Intelligence is the meta-problem underlying all challenges. Once intelligence is solved, we indirectly unlock solutions to every problem. The acceleration of ASI injects a second-order surge into all frontier sciences and engineering, placing us at an inflection point where the future will be unrecognizably better.
 
-The exponential growth of compute power, digital data & artifacts, and nn-based AI signals a broad intelligence revolution in both scale and depth.
+The exponential growth of compute power, digital data and artifacts, and nn-based AI signals a broad intelligence revolution in both scale and depth.
 
 Technology has also been historically proven to be the only robust, consistent, and effective means to combat various social disparities, both directly and indirectly.
 
@@ -27,27 +27,27 @@ Acceleration follows an exponential curve while human imagination remains confin
 
 #### Highlight
 
-**My Three.js Games**
+**Build Dreams**
 
 I like to dream, and I like to make that dream appear before my eyes. Making games and experiences on Three.js with AI has become one of my biggest hobbies, I get to be the architect of a world I want to visit and be immersed in. It is truly remarkable.
 
 **Videos:**
 
-- [My Three.js Games — Video 1](https://youtu.be/o_USermt690)
-- [My Three.js Games — Video 2](https://youtu.be/sH4emb3Sff8)
-- [My Three.js Games — Video 3](https://youtu.be/B3BaLHv6qqM)
-- [My Three.js Games — Video 4](https://youtu.be/Y2psQc6GEb0)
-- [My Three.js Games — Video 5](https://youtu.be/CyIb1XJU9SQ)
-- [My Three.js Games — Video 6](https://youtu.be/-i1vPXEoNXg)
-- [My Three.js Games — Video 7](https://youtu.be/kmueNuoSMaI)
-- [My Three.js Games — Video 8](https://youtu.be/4aNivsxDA_Y)
+- [Build Dreams — Video 1](https://youtu.be/o_USermt690)
+- [Build Dreams — Video 2](https://youtu.be/sH4emb3Sff8)
+- [Build Dreams — Video 3](https://youtu.be/B3BaLHv6qqM)
+- [Build Dreams — Video 4](https://youtu.be/Y2psQc6GEb0)
+- [Build Dreams — Video 5](https://youtu.be/CyIb1XJU9SQ)
+- [Build Dreams — Video 6](https://youtu.be/-i1vPXEoNXg)
+- [Build Dreams — Video 7](https://youtu.be/kmueNuoSMaI)
+- [Build Dreams — Video 8](https://youtu.be/4aNivsxDA_Y)
 
 #### Find me on
 
-- X: [@scottstts](https://x.com/scottstts/)
-- LinkedIn: [Scott Sun](https://www.linkedin.com/in/st-scottsun-inireland/)
-- GitHub: [scottstts](https://github.com/scottstts/)
+- GitHub: [scottstts](https://github.com/scottstts)
+- X: [@scottstts](https://x.com/scottstts)
 - Instagram: [@scottstts](https://www.instagram.com/scottstts/)
+- LinkedIn: [Scott Sun](https://www.linkedin.com/in/st-scottsun-inireland/)
 
 ---
 
@@ -69,7 +69,7 @@ In the year 2127, humanity created its first Dyson sphere around Alpha Centauri 
 
 You have your own estate in Dyson City, and you've chosen to make it a Victorian style manor. The rest of the city is a 200 acre golden scientific-industrial compound.
 
-You have your own vehicle called Aurelia to take you anywhere in this city. A fleet of research spacecraft come in every 30s for data backup and refueling.
+You have your own AI called Aurelia to guide you in this city. A fleet of research spacecraft come in every 30s for data backup and refueling.
 
 Now you're in charge.
 
@@ -95,11 +95,11 @@ It started as a test to see Opus 5.5's capabilities, and it quickly escalated in
 
 ### Jelly Baby
 
-**Tagline:** Bouncy fun.
+**Tagline:** Gelatinous fun.
 
 **Videos:**
 
-- [Bouncy Jelly Baby Game](https://youtu.be/CyIb1XJU9SQ)
+- [Jelly Baby](https://youtu.be/CyIb1XJU9SQ)
 
 Started as a jelly physics simulation demo which seemed well received, so I goofed off and made this Jelly Baby game with the same physics engine and softbody kernel.
 
