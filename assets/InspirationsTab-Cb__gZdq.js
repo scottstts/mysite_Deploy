@@ -1,4 +1,4 @@
-import{b as l,j as e}from"./index-Dth_Lw1H.js";import{i as t,a as n,E as h}from"./Ending-CBYXKIVG.js";import{P as d}from"./Paragraphs-De0cihyR.js";import"./safeHtml-BFt9vdb1.js";const c=[{id:"elon",name:"Elon Musk",description:`<span class="font-semibold text-yellow-200">I would pick flawed authenticity over faked perfection any day.</span><br><br>
+import{b as l,j as e}from"./index-COgIBh7u.js";import{i as t,a as n,E as h}from"./Ending-CI0hSdiE.js";import{P as d}from"./Paragraphs-pQVOtSMH.js";import"./safeHtml-Cx9S1DLh.js";const c=[{id:"elon",name:"Elon Musk",description:`<span class="font-semibold text-yellow-200">I would pick flawed authenticity over faked perfection any day.</span><br><br>
 
 To borrow the ending of the <span class="font-semibold italic">Elon Musk</span> biography by Walter Isaacson, "<span class="italic">They can be reckless, cringeworthy, sometimes even toxic. They can also be crazy. Crazy enough to think they can change the world.</span>"<br><br>
 
